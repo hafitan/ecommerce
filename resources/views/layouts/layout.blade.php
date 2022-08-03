@@ -1,151 +1,173 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>E-Commerce</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="stylesheet" href="{{ asset('css/app/header.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/app/content.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/app/footer.css') }}">
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Point of Sales</title>
-        <link href="{{url('admin/dist/css/styles.css')}}" rel="stylesheet" />
-
-        {{-- link bootstrap --}}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-        {{-- Link data table --}}
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-
-        {{-- Link Font Awesome --}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-
-        {{-- google api --}}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-        <style>
-            .coba{
-                background: #FEAC5E;  /* fallback for old browsers */
-                background: -webkit-linear-gradient(to top, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */
-                background: linear-gradient(to top, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-            }
-        </style>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
-    <body class="sb-nav-fixed" {{Session::get('berhasil') ? 'onload = JavaScript:AutoRefresh(1000);' : '' }} >
+    <body style="height: 100%">
 
-        <!-- navbar -->
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <img src="{{url('landing/assets/images/logo.png')}}" alt="website logo" class="ml-2" width="20px" height="20px">
-            <a class="navbar-brand" href="{{route('home')}}">Point <span style="font-weight: lighter">of</span> Sales</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-
-            <!-- Navbar-->
-            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
-
-                @if ($level == "ADMIN" )
-                    <li class="nav-item">
-                        <img src="{{url('landing/assets/images/admin.png')}}" width="40px" height="40px" style="object-fit: cover" class="image rounded-circle">
-                    </li>
-                @elseif($level == "ADMIN")
-                    <li class="nav-item">
-                        <img src="{{url('landing/assets/images/kasir.png')}}" width="40px" height="40px" style="object-fit: cover" class="image rounded-circle">
-                     </li>
-                @elseif($level == "ADMIN")
-                    <li class="nav-item">
-                        <img src="{{url('landing/assets/images/manager.png')}}" width="40px" height="40px" style="object-fit: cover" class="image rounded-circle">
-                    </li>
-                @endif
-
-                <li class="nav-item">
-                <form action="{{route('logout')}}" method="POST" method="POST" onclick="return confirm('Yakin ?');">
+    <section class="h-100 w-100 bg-white" style="box-sizing: border-box">
+        <nav class="navbar-1-1 navbar navbar-expand-lg navbar-light p-4 px-md-4 mb-3 bg-body"
+        style="font-family: Poppins, sans-serif">
+            <div class="container">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M3.5 15.75C3.5 8.98451 8.98451 3.5 15.75 3.5H29.75C30.7165 3.5 31.5 4.2835 31.5 5.25C31.5 6.2165 30.7165 7 29.75 7H15.75C10.9175 7 7 10.9175 7 15.75V29.75C7 30.7165 6.2165 31.5 5.25 31.5C4.2835 31.5 3.5 30.7165 3.5 29.75V15.75Z"
+                    fill="#0EC8F8" />
+                    <path
+                    d="M10.5 17.5C10.5 13.634 13.634 10.5 17.5 10.5H31.5C35.366 10.5 38.5 13.634 38.5 17.5V31.5C38.5 35.366 35.366 38.5 31.5 38.5H17.5C13.634 38.5 10.5 35.366 10.5 31.5V17.5Z"
+                    fill="#0EC8F8" />
+                    </svg>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                {{-- <li class="nav-item">
+                <a class="nav-link px-md-4 active" aria-current="page" href="{{ route('dashboard') }}">Home</a>
+                </li> --}}
+                {{-- <li class="nav-item">
+                <a class="nav-link px-md-4" href="{{ route('admin.category.index') }}">Category</a>
+                </li> --}}
+            <div class="d-flex">
+                {{-- <form action="{{ route('auth.logout') }}" onsubmit="return confirm('{{ Auth::user()->name}} mau Logout ?')" method="post"> --}}
                     @csrf
-                        <button class="btn" style="color:white;" type="submit"><i class="fas fa-sign-out-alt" style="color: white"></i></button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="{{route('home')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-
-                            <div class="sb-sidenav-menu-heading">Menu</div>
-
-                            @if ($level == "ADMIN")
-                            <a class="nav-link" href="{{route('barang.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Barang
-                            </a>
-                            <a class="nav-link" href="{{route('merek.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Merek
-                            </a>
-                            <a class="nav-link" href="{{route('distributor.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Distributor
-                            </a>
-                            <a class="nav-link" href="{{route('laporan.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Laporan
-                            </a>
-                                <a class="nav-link" href="{{route('transaksi.index')}}">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    Transaksi
-                                </a>
-                            @endif
-                            
-
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Projek ini Dibuat:</div>
-                        &copy; Andriana Rizki
-                    </div>
-                </nav>
-
+                    <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
+                </form>
             </div>
+            </div>
+        </div>
+        </nav>
+    </section>
+
+  <section class="h-100 w-100 bg-white" style="box-sizing: border-box ">
+
+        <div class="content-2-2 container-xxl mx-auto p-0  position-relative p-4 m-4" style="font-family: 'Poppins', sans-serif">
+
+            @if (session()->get('success'))
+            <div class="container">
+                 <div class="text-center">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{ session()->get('success') }}!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                </div>
+            </div>
+            @endif
+
             @yield('content')
-        </div>  
         </div>
 
-        {{-- link jquery --}}
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </section>
 
-        {{-- link js --}}
-        <script src="{{url('admin/dist/js/scripts.js')}}"></script>
-      
-        {{-- link data table --}}
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
-        
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <section class="h-100 w-100 bg-white" style="box-sizing: border-box">
+		<div class="footer-2-2 container-xxl mx-auto position-relative p-0" style="font-family: 'Poppins', sans-serif">
 
-        <script>
-            $.(document).ready( function () {
-                $('#table_id').DataTable();
-            } );
-        </script>
+			<div class="border-color info-footer">
+				<div class="">
+					<hr class="hr" />
+				</div>
+				<div class="mx-auto d-flex flex-column flex-lg-row align-items-center footer-info-space gap-4">
+					<div class="d-flex title-font font-medium align-items-center gap-4">
+						<a href="">
+							<svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<circle cx="15" cy="15" r="15" fill="#C7C7C7" />
+								<g clip-path="url(#clip0)">
+									<path
+										d="M17.6648 9.65667H19.1254V7.11267C18.8734 7.078 18.0068 7 16.9974 7C14.8914 7 13.4488 8.32467 13.4488 10.7593V13H11.1248V15.844H13.4488V23H16.2981V15.8447H18.5281L18.8821 13.0007H16.2974V11.0413C16.2981 10.2193 16.5194 9.65667 17.6648 9.65667V9.65667Z"
+										fill="white" />
+								</g>
+								<defs>
+									<clipPath id="clip0">
+										<rect width="16" height="16" fill="white" transform="translate(7 7)" />
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+						<a href="">
+							<svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<circle cx="15" cy="15" r="15" fill="#C7C7C7" />
+								<g clip-path="url(#clip0)">
+									<path
+										d="M23 10.039C22.405 10.3 21.771 10.473 21.11 10.557C21.79 10.151 22.309 9.513 22.553 8.744C21.919 9.122 21.219 9.389 20.473 9.538C19.871 8.897 19.013 8.5 18.077 8.5C16.261 8.5 14.799 9.974 14.799 11.781C14.799 12.041 14.821 12.291 14.875 12.529C12.148 12.396 9.735 11.089 8.114 9.098C7.831 9.589 7.665 10.151 7.665 10.756C7.665 11.892 8.25 12.899 9.122 13.482C8.595 13.472 8.078 13.319 7.64 13.078C7.64 13.088 7.64 13.101 7.64 13.114C7.64 14.708 8.777 16.032 10.268 16.337C10.001 16.41 9.71 16.445 9.408 16.445C9.198 16.445 8.986 16.433 8.787 16.389C9.212 17.688 10.418 18.643 11.852 18.674C10.736 19.547 9.319 20.073 7.785 20.073C7.516 20.073 7.258 20.061 7 20.028C8.453 20.965 10.175 21.5 12.032 21.5C18.068 21.5 21.368 16.5 21.368 12.166C21.368 12.021 21.363 11.881 21.356 11.742C22.007 11.28 22.554 10.703 23 10.039Z"
+										fill="white" />
+								</g>
+								<defs>
+									<clipPath id="clip0">
+										<rect width="16" height="16" fill="white" transform="translate(7 7)" />
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+						<a href="">
+							<svg class="social-media-p" width="30" height="30" viewBox="0 0 30 30" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M17.8711 15C17.8711 16.5857 16.5857 17.8711 15 17.8711C13.4143 17.8711 12.1289 16.5857 12.1289 15C12.1289 13.4143 13.4143 12.1289 15 12.1289C16.5857 12.1289 17.8711 13.4143 17.8711 15Z"
+									fill="#C7C7C7" />
+								<path
+									d="M21.7144 9.92039C21.5764 9.5464 21.3562 9.20789 21.0701 8.93002C20.7923 8.64392 20.454 8.42374 20.0797 8.28572C19.7762 8.16785 19.3203 8.02754 18.4805 7.98932C17.5721 7.94789 17.2997 7.93896 14.9999 7.93896C12.6999 7.93896 12.4275 7.94766 11.5193 7.98909C10.6796 8.02754 10.2234 8.16785 9.92014 8.28572C9.54591 8.42374 9.2074 8.64392 8.92976 8.93002C8.64366 9.20789 8.42348 9.54617 8.28523 9.92039C8.16736 10.2239 8.02705 10.6801 7.98883 11.5198C7.9474 12.428 7.93848 12.7004 7.93848 15.0004C7.93848 17.3002 7.9474 17.5726 7.98883 18.481C8.02705 19.3208 8.16736 19.7767 8.28523 20.0802C8.42348 20.4545 8.64343 20.7927 8.92953 21.0706C9.2074 21.3567 9.54568 21.5769 9.91991 21.7149C10.2234 21.833 10.6796 21.9733 11.5193 22.0115C12.4275 22.053 12.6997 22.0617 14.9997 22.0617C17.3 22.0617 17.5723 22.053 18.4803 22.0115C19.3201 21.9733 19.7762 21.833 20.0797 21.7149C20.8309 21.4251 21.4247 20.8314 21.7144 20.0802C21.8323 19.7767 21.9726 19.3208 22.011 18.481C22.0525 17.5726 22.0612 17.3002 22.0612 15.0004C22.0612 12.7004 22.0525 12.428 22.011 11.5198C21.9728 10.6801 21.8325 10.2239 21.7144 9.92039V9.92039ZM14.9999 19.4231C12.5571 19.4231 10.5768 17.4431 10.5768 15.0002C10.5768 12.5573 12.5571 10.5773 14.9999 10.5773C17.4426 10.5773 19.4229 12.5573 19.4229 15.0002C19.4229 17.4431 17.4426 19.4231 14.9999 19.4231ZM19.5977 11.4361C19.0269 11.4361 18.5641 10.9733 18.5641 10.4024C18.5641 9.83159 19.0269 9.36879 19.5977 9.36879C20.1685 9.36879 20.6313 9.83159 20.6313 10.4024C20.6311 10.9733 20.1685 11.4361 19.5977 11.4361Z"
+									fill="#C7C7C7" />
+								<path
+									d="M15 0C6.717 0 0 6.717 0 15C0 23.283 6.717 30 15 30C23.283 30 30 23.283 30 15C30 6.717 23.283 0 15 0ZM23.5613 18.5511C23.5197 19.468 23.3739 20.094 23.161 20.6419C22.7135 21.7989 21.7989 22.7135 20.6419 23.161C20.0942 23.3739 19.468 23.5194 18.5513 23.5613C17.6328 23.6032 17.3394 23.6133 15.0002 23.6133C12.6608 23.6133 12.3676 23.6032 11.4489 23.5613C10.5322 23.5194 9.90601 23.3739 9.35829 23.161C8.78334 22.9447 8.26286 22.6057 7.83257 22.1674C7.39449 21.7374 7.05551 21.2167 6.83922 20.6419C6.62636 20.0942 6.48056 19.468 6.4389 18.5513C6.39656 17.6326 6.38672 17.3392 6.38672 15C6.38672 12.6608 6.39656 12.3674 6.43867 11.4489C6.48033 10.532 6.6259 9.90601 6.83876 9.35806C7.05505 8.78334 7.39426 8.26263 7.83257 7.83257C8.26263 7.39426 8.78334 7.05528 9.35806 6.83899C9.90601 6.62613 10.532 6.48056 11.4489 6.43867C12.3674 6.39679 12.6608 6.38672 15 6.38672C17.3392 6.38672 17.6326 6.39679 18.5511 6.4389C19.468 6.48056 20.094 6.62613 20.6419 6.83876C21.2167 7.05505 21.7374 7.39426 22.1677 7.83257C22.6057 8.26286 22.9449 8.78334 23.161 9.35806C23.3741 9.90601 23.5197 10.532 23.5616 11.4489C23.6034 12.3674 23.6133 12.6608 23.6133 15C23.6133 17.3392 23.6034 17.6326 23.5613 18.5511V18.5511Z"
+									fill="#C7C7C7" />
+							</svg>
+						</a>
+						<a href="">
+							<svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<circle cx="15" cy="15" r="15" fill="#C7C7C7" />
+								<g clip-path="url(#clip0)">
+									<path
+										d="M17.9027 22.4467C17.916 22.4427 17.9287 22.4373 17.942 22.4327C26.0853 19.1973 23.8327 7 15 7C10.5673 7 7 10.6133 7 15C7 20.5513 12.6227 24.5127 17.9027 22.4467ZM10.5207 20.3727C11.0887 19.418 12.9267 16.7247 16.064 15.7953C16.72 17.468 17.18 19.4193 17.2253 21.632C14.848 22.4313 12.3407 21.8933 10.5207 20.3727V20.3727ZM18.2087 21.2147C18.1213 19.0887 17.6873 17.2033 17.0687 15.57C18.4567 15.3533 20.0633 15.498 21.8853 16.228C21.498 18.402 20.108 20.2293 18.2087 21.2147V21.2147ZM21.99 15.194C19.9833 14.44 18.2147 14.346 16.684 14.638C16.4473 14.1047 16.1987 13.592 15.9353 13.12C18.284 12.182 19.672 11.0387 20.2933 10.4333C21.39 11.7027 22.0413 13.346 21.99 15.194V15.194ZM19.5833 9.72133C19.018 10.2593 17.6867 11.346 15.41 12.2347C14.294 10.4693 13.1007 9.224 12.3447 8.52667C14.7633 7.53067 17.5527 7.956 19.5833 9.72133V9.72133ZM11.3887 9.01533C11.9593 9.51733 13.212 10.7227 14.4207 12.5867C12.7607 13.1213 10.6793 13.514 8.148 13.5693C8.55067 11.64 9.75333 10.0053 11.3887 9.01533V9.01533ZM8.02133 14.5733C10.8547 14.5273 13.148 14.08 14.9607 13.4747C15.2113 13.914 15.4493 14.3927 15.678 14.89C12.5213 15.8953 10.5487 18.4907 9.79333 19.6627C8.57467 18.3027 7.90267 16.528 8.02133 14.5733V14.5733Z"
+										fill="white" />
+								</g>
+								<defs>
+									<clipPath id="clip0">
+										<rect width="16" height="16" fill="white" transform="translate(7 7)" />
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+					</div>
+					<nav class="mx-auto d-flex flex-wrap align-items-center justify-content-center gap-4">
+						<a href="#" class="footer-link" style="text-decoration: none">Terms of Service</a>
+						<span>|</span>
+						<a href="#" class="footer-link" style="text-decoration: none">Privacy Policy</a>
+						<span>|</span>
+						<a href="#" class="footer-link" style="text-decoration: none">Licenses</a>
+					</nav>
+					<nav class="d-flex flex-lg-row flex-column align-items-center justify-content-center">
+						<p style="margin: 0">Perpusku</p>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        <script type = "text/JavaScript">
-            <!--
-            function AutoRefresh( t ) {
-                setTimeout("location.reload(true);", t);
-            }
-            //-->
-        </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-        @include('sweetalert::alert')
-
+      <script>
+        document.getElementsByClassName('footer-link').addEventListener("click", function(event){
+            event.preventDefault()
+        });
+      </script>
     </body>
-
-   
-</html>
+  </html>
