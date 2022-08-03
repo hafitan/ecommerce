@@ -91,7 +91,7 @@
         <i class="fas fa-fw fa-arrow-right"></i>
           {{ __('Logout') }}</a>  --}}
 
-          <form action="{{ route('logout') }}" onsubmit="return confirm('{{ Auth::user()->name}}Yakin mau Logout ?')" method="post">
+          <form action="{{ route('logout') }}" onsubmit="return confirm('{{ Auth::user()->username }} Yakin mau Logout ?')" method="post">
             @csrf
             <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
         </form>
