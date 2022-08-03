@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,5 +8,5 @@ class Order extends Model
 {
     protected $table = 'order';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama_product', 'kategori', 'qty','tgl_order','total_harga','status'];
+    protected $fillable = ['name', 'category', 'qty','date','price','status'];
 }
