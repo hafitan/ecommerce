@@ -43,7 +43,7 @@
                             @error('category')
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
-                    </div>
+                        </div>
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
@@ -57,7 +57,7 @@
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>
-                    <td width="230px">Category</td>
+                    <td width="800px">Category</td>
                     <td colspan="2" width="100px">Action</td>
                 </tr>
                     @php
@@ -67,7 +67,7 @@
                 <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $p->category_product }}</td>      
-                    <td><a type="button" class="btn btn-primary">Ubah</a></td>
+                    <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
                         <form  action="{{ route('category.destroy', $p->id) }}" method="POST">
                           @csrf
@@ -76,6 +76,31 @@
                           <button onclick="return confirm('Yakin Hapus data ini??')" type="submit" class="btn btn-danger">Hapus</button>
                         </form>
                     </td> 
+                    <div class="modal fade" id="modalUpdate{{$p->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">               
+                            <form action="{{ route('category.update', $p->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf       
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <input type="name" class="form-control" name="category_product" value="{{ $p->category_product }}">
+                            @error('category')
+                              <span class="text-danger">Field ini tidak boleh kosong</span>
+                            @enderror
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
                 </tr>
                     @endforeach
             </table>

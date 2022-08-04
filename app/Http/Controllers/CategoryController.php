@@ -75,7 +75,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request , rules: [
+            'category_product' => 'required',
+        ]);
+        $barang = Category::find($id);
+        $barang->category_product= $request->category_product;
+        $barang->save();
+        
+        return redirect('category');
     }
 
     /**
