@@ -26,7 +26,10 @@
             <button type="button" class="btn btn-primary mt-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
-              
+            <button type="button" class="btn btn-primary mt-3" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal1"> 
+                <i class="bi bi-plus-circle">Tambah stock</i>
+            </button>
+            <div>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -60,11 +63,56 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Category</label>
-                            <input type="name" class="form-control" name="category">
-                            @error('category')
+                            <select type="name" class="form-control" name="category">
+                                <option selected disabled value=""><--- Pilih ---></option>
+                                @foreach($category as $key => $c)
+                                <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>    
+                                @endforeach
+                                @error('category')
+                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                @enderror
+                            </select>
+                        </div>
+                  <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+                </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div>
+            <div>
+              <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST" action="{{ route('product.restock') }}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Product</label>
+                            <select type="name" class="form-control" name="name">
+                                <option selected disabled value=""><--- Pilih ---></option>
+                                @foreach($product as $key => $p)
+                                    <option value="{{ $p->name }}"> {{ $p->name}} </option> 
+                                @endforeach
+                            </select>
+                            @error('name')
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
-                        </div>
+                    </div>
+                    <div class="mb-3">
+                            <label class="form-label">QTY</label>
+                            <input type="number" class="form-control" name="qty" min="0">
+                            @error('qty')
+                              <span class="text-danger">Field ini tidak boleh kosong</span>
+                            @enderror
+                    </div>
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
