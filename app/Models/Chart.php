@@ -8,5 +8,5 @@ class Chart extends Model
 {
     protected $table = 'chart';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama_product', 'kategori', 'qty','tgl_order','total_harga','status'];
+    protected $fillable = ['name', 'category', 'qty','date','price','status'];
 }

@@ -59,18 +59,18 @@
           <span>Category</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('obat') }}">
+        <a class="nav-link" href="{{ url('order') }}">
           <i class="fas fa-fw fa-book"></i>
           <span>Order</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('kunjungan') }}">
+        <a class="nav-link" href="{{ url('product') }}">
           <i class="fas fa-fw fa-address-card"></i>
           <span>Product</span></a>
       </li>
       
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('rombels') }}">
+        <a class="nav-link" href="{{ url('chart') }}">
           <i class="fas fa-fw fa-award"></i>
           <span>Chart</span></a>
       </li> 
@@ -91,7 +91,7 @@
         <i class="fas fa-fw fa-arrow-right"></i>
           {{ __('Logout') }}</a>  --}}
 
-          <form action="{{ route('logout') }}" onsubmit="return confirm('{{ Auth::user()->username }} Yakin mau Logout ?')" method="post">
+          <form action="{{ route('logout') }}" onsubmit="Yakin mau Logout ?')" method="post">
             @csrf
             <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
         </form>
