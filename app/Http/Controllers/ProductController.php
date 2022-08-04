@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('product.index' , compact('product'));
+        return view('admin.product.index' , compact('product'));
     }
 
     /**
@@ -35,7 +35,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
+        switch($cek){
+            case false:
+                $request->validate([
+                    'name' => 'required',
+                    'stock' => 'required',
+                    'price' => 'required',
+                    'category' => 'required'
+                ]);
+
+                 
+        Product::create($request->all());
+        return redirect()->route('admin.product.index')
+        ->with('succes' , 'Data berhasil ditambah');
+        
+        break;
+
+        default:
+        return redirect()->back()->with('danger' , 'Data sudah ada');
+
+        }
     }
 
     /**
@@ -81,7 +101,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product.index')
+        return redirect()->route('admin.product.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
 }

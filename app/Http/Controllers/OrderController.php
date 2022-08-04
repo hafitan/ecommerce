@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         $order = Order::latest()->paginate(5);
 
-        return view('order.index',compact('order'))
+        return view('admin.order.index',compact('order'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -86,6 +86,6 @@ class OrderController extends Controller
     {
         $order = Order::all();
         $order->delete();
-        return redirect()->route('order.index');
+        return redirect()->route('admin.order.index');
     }
 }

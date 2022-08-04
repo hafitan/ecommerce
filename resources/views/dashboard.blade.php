@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout','level'=>'USER')
 
 @section('content')
 

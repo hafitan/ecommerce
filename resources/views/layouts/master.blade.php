@@ -15,6 +15,7 @@
   <link href="assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
   <!-- Custom styles for this template-->
   <link href="../../assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
@@ -54,6 +55,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+      @if ($level == "ADMIN")
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('category') }}">
           <i class="fas fa-fw fa-archive"></i>
@@ -75,6 +77,8 @@
           <i class="fas fa-fw fa-award"></i>
           <span>Chart</span></a>
       </li>
+      @endif
+
 
       {{-- <!-- Divider --> --}}
       {{-- <hr class="sidebar-divider"> --}}
@@ -97,7 +101,7 @@
                       Logout
           </div>
 
-          <form action="{{ route('logout') }}" onsubmit="Yakin mau Logout ?')" method="post">
+          <form action="{{ route('logout') }}"onclick="return confirm('{{Auth::user()->username}} Yakin Ingin Logout??')" method="post">
             @csrf
             <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
         </form>
