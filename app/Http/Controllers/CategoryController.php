@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
-        return view('product.index' , compact('product'));
+        $category = Category::all();
+        return view('category.index' , compact('category'));
     }
 
     /**
@@ -35,27 +35,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
-        switch($cek){
-            case false:
-                $request->validate([
-                    'name' => 'required',
-                    'stock' => 'required',
-                    'price' => 'required',
-                    'category' => 'required'
-                ]);
+        $request->validate([
+            'category_product' => 'required',
+        ]);
 
-                 
-        Product::create($request->all());
-        return redirect()->route('product.index')
+        Category::create($request->all());
+        return redirect()->route('category.index')
         ->with('success' , 'Data berhasil ditambah');
-        
-        break;
-
-        default:
-        return redirect()->back()->with('danger' , 'Data sudah ada');
-
-        }
     }
 
     /**
@@ -89,7 +75,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request , rules: [
+            'category_product' => 'required',
+        ]);
+        $barang = Category::find($id);
+        $barang->category_product= $request->category_product;
+        $barang->save();
+        
+        return redirect('category');
     }
 
     /**
@@ -98,10 +91,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Category $category)
     {
-        $product->delete();
-        return redirect()->route('product.index')
+        $category->delete();
+        return redirect()->route('category.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
 }
