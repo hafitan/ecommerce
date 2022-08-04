@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table class="table table-success table-striped">
         <tr>
             <th>No</th>
             <th>name</th>
