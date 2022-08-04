@@ -1,8 +1,5 @@
 <?php
 
-
-// use App\Http\Controllers\OrderController;
-// use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -20,14 +17,11 @@ use App\Http\Controllers\HomeController;
 Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);
 
 
-//Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);
-//Route::get('product' , [App\Http\Controllers\ProductController::class, 'destroy']);
 Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -38,7 +32,6 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Auth::routes();
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::group(['middleware' => 'auth','admin'], function(){
@@ -50,5 +43,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('product', ProductController::class);
+});
+
+Route::group(['middleware' => 'auth','admin'], function(){
+    Route::resource('category', CategoryController::class);
 });
 

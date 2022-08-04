@@ -48,7 +48,7 @@ class ProductController extends Controller
                  
         Product::create($request->all());
         return redirect()->route('admin.product.index')
-        ->with('succes' , 'Data berhasil ditambah');
+        ->with('success' , 'Data berhasil ditambah');
         
         break;
 
