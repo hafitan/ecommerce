@@ -69,13 +69,13 @@
           <i class="fas fa-fw fa-address-card"></i>
           <span>Product</span></a>
       </li>
-      
+
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('chart') }}">
           <i class="fas fa-fw fa-award"></i>
           <span>Chart</span></a>
-      </li> 
-      
+      </li>
+
       {{-- <!-- Divider --> --}}
       {{-- <hr class="sidebar-divider"> --}}
 
@@ -101,7 +101,7 @@
             @csrf
             <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
         </form>
-      </li> 
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

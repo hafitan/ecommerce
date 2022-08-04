@@ -1,9 +1,13 @@
 <?php
 
+<<<<<<< HEAD
+=======
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+>>>>>>> 69aab48fca87f2238b3f6029264f37127aef31eb
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -25,12 +29,20 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+// Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
 
 
 Auth::routes();
 
+<<<<<<< HEAD
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('order', OrderController::class);
+});
+=======
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> 69aab48fca87f2238b3f6029264f37127aef31eb
 
