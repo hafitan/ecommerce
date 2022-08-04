@@ -23,10 +23,12 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Nama order</th>
-            <th>Jenis order</th>
-            <th>Fungsi order</th>
-            <th>Stok order</th>
+            <th>name</th>
+            <th>category</th>
+            <th>qty</th>
+            <th>date</th>
+            <th>price</th>
+            <th>status</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($order as $oba)
