@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);
+//Route::get('product' , [App\Http\Controllers\ProductController::class, 'destroy']);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,3 +33,4 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
