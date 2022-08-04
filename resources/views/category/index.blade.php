@@ -5,7 +5,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">Product</h1>
+            <h1 class="mt-4">Category</h1>
             @if ($message = Session::get('success'))
             <br><br>
         <div class="alert alert-success">
@@ -34,37 +34,16 @@
                     <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="POST" action="{{ route('product.store') }}">
+                    <form method="POST" action="{{ route('category.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label">Product</label>
-                            <input type="name" class="form-control" name="name">
-                            @error('name')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Stock</label>
-                            <input type="number" class="form-control" name="stock" min="0">
-                            @error('stock')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" class="form-control" name="price" min="0">
-                            @error('price')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label">Category</label>
-                            <input type="name" class="form-control" name="category">
+                            <input type="name" class="form-control" name="category_product">
                             @error('category')
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
-                        </div>
+                    </div>
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
@@ -78,25 +57,19 @@
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>
-                    <td width="230px">Name</td>
-                    <td>Stock</td>
-                    <td>Price</td>
-                    <td>Category</td>
-                    <td colspan="2" width="100pxs">Action</td>
+                    <td width="230px">Category</td>
+                    <td colspan="2" width="100px">Action</td>
                 </tr>
                     @php
                         $i = 0;
                     @endphp
-                    @foreach($product as $key => $p)
+                    @foreach($category as $key => $p)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $p->name }}</td>      
-                    <td>{{ $p->stock}}</td>
-                    <td>{{ $p->price }}</td>
-                    <td>{{ $p->category }}</td>
+                    <td>{{ $p->category_product }}</td>      
                     <td><a type="button" class="btn btn-primary">Ubah</a></td>
                     <td>
-                        <form  action="{{ route('product.destroy', $p->id) }}" method="POST">
+                        <form  action="{{ route('category.destroy', $p->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
               
