@@ -91,6 +91,11 @@
         <i class="fas fa-fw fa-arrow-right"></i>
           {{ __('Logout') }}</a>  --}}
 
+          <div class="sidebar-heading">
+            <li class="nav-item active">
+                      Logout
+          </div>
+
           <form action="{{ route('logout') }}" onsubmit="Yakin mau Logout ?')" method="post">
             @csrf
             <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
