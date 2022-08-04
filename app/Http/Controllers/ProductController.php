@@ -35,7 +35,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
+        switch($cek){
+            case false:
+                $request->validate([
+                    'name' => 'required',
+                    'stock' => 'required',
+                    'price' => 'required',
+                    'category' => 'required'
+                ]);
+
+                 
+        Product::create($request->all());
+        return redirect()->route('product.index')
+        ->with('succes' , 'Data berhasil ditambah');
+        
+        break;
+
+        default:
+        return redirect()->back()->with('danger' , 'Data sudah ada');
+
+        }
     }
 
     /**
