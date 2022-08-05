@@ -71,12 +71,6 @@
           <span>List Product</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('stock-in') }}">
-          <i class="bi bi-box-arrow-in-down"></i>
-          <span>Stock in</span></a>
-      </li>
-
-      <li class="nav-item active">
         <a class="nav-link" href="{{ url('chart') }}">
           <i class="bi bi-basket"></i>
           <span>Chart</span></a>
