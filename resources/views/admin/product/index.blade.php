@@ -1,4 +1,4 @@
-@extends('layouts.master',['level' => 'ADMIN'])
+@extends('layouts.master')
 
 @section('content')
 
@@ -26,7 +26,7 @@
             <button type="button" class="btn btn-primary mt-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
-              
+            <div>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -60,10 +60,15 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Category</label>
-                            <input type="name" class="form-control" name="category">
-                            @error('category')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
+                            <select type="name" class="form-control" name="category">
+                                <option selected disabled value=""><--- Pilih ---></option>
+                                @foreach($category as $key => $c)
+                                <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>    
+                                @endforeach
+                                @error('category')
+                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                @enderror
+                            </select>
                         </div>
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -74,7 +79,6 @@
             </div>
             </div>
         </div>
-        <br>
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>

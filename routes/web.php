@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +46,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('product', ProductController::class);
 });
-
+//Route::post('product' , [App\Http\Controllers\ProductController::class , 'restock']);
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('category', CategoryController::class);
 });
