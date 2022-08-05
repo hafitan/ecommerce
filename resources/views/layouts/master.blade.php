@@ -55,30 +55,28 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      @if( auth()->user()->role == '1')
-      <li class="nav-item active">
+      @if( auth()->user()->role == '1')      <li class="nav-item active">
         <a class="nav-link" href="{{ url('category') }}">
           <i class="fas fa-fw fa-archive"></i>
           <span>Category</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('order') }}">
-          <i class="fas fa-fw fa-book"></i>
-          <span>Order</span></a>
+          <i class="bi bi-bag-check"></i>
+          <span>List Order</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('product') }}">
-          <i class="fas fa-fw fa-address-card"></i>
-          <span>Product</span></a>
+          <i class="bi bi-stack"></i>
+          <span>List Product</span></a>
       </li>
-
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('chart') }}">
-          <i class="fas fa-fw fa-award"></i>
+          <i class="bi bi-basket"></i>
           <span>Chart</span></a>
       </li>
-      @endif
 
+@endif
 
       {{-- <!-- Divider --> --}}
       {{-- <hr class="sidebar-divider"> --}}

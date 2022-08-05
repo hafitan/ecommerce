@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Restock;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +16,8 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('admin.product.index' , compact('product'));
+        $category = Category::all();
+        return view('admin.product.index' , compact('product' , 'category'));
     }
 
     /**
@@ -22,9 +25,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'qty' => 'required',
+        ]);
+
+        Restock::create($request->all());
+        return redirect()->route('admin.product.index')
+        ->with('success' , 'Data berhasil ditambah');
     }
 
     /**
@@ -64,9 +74,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -104,4 +114,5 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
+    
 }
