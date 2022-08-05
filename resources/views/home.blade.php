@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',['level'=>'ADMIN'])
 
 @section('content')
 

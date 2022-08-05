@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -16,13 +15,18 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-///Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);///Route::get('product' , [App\Http\Controllers\ProductController::class, 'destroy']);
+
+Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
 
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
@@ -30,20 +34,20 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'], function(){
+
+Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('order', OrderController::class);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('product', ProductController::class);
 });
-
-Route::group(['middleware' => 'auth'], function(){
+//Route::post('product' , [App\Http\Controllers\ProductController::class , 'restock']);
+Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('category', CategoryController::class);
 });
 

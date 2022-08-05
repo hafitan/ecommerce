@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',['level' => 'ADMIN'])
 
 @section('content')
     <div class="row">
@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table class="table table-success table-striped">
         <tr>
             <th>No</th>
             <th>name</th>

@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $product = Product::all();
         $category = Category::all();
-        return view('product.index' , compact('product' , 'category'));
+        return view('admin.product.index' , compact('product' , 'category'));
     }
 
     /**
@@ -25,9 +25,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'qty' => 'required',
+        ]);
+
+        Restock::create($request->all());
+        return redirect()->route('admin.product.index')
+        ->with('success' , 'Data berhasil ditambah');
     }
 
     /**
@@ -50,7 +57,7 @@ class ProductController extends Controller
 
                  
         Product::create($request->all());
-        return redirect()->route('product.index')
+        return redirect()->route('admin.product.index')
         ->with('success' , 'Data berhasil ditambah');
         
         break;
@@ -67,9 +74,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -104,17 +111,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product.index')
+        return redirect()->route('admin.product.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
-    public function restock(Request $request){
-        $request->validate([
-            'name' => 'required',
-            'qty' => 'required',
-        ]);
-
-        Restock::create($request->all());
-        return redirect()->route('product')
-        ->with('success' , 'Data berhasil ditambah');
-    }
+    
 }

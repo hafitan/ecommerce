@@ -62,20 +62,27 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('order') }}">
-          <i class="fas fa-fw fa-book"></i>
-          <span>Order</span></a>
+          <i class="bi bi-bag-check"></i>
+          <span>List Order</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('product') }}">
-          <i class="fas fa-fw fa-address-card"></i>
-          <span>Product</span></a>
+          <i class="bi bi-stack"></i>
+          <span>List Product</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url('stock-in') }}">
+          <i class="bi bi-box-arrow-in-down"></i>
+          <span>Stock in</span></a>
       </li>
 
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('chart') }}">
-          <i class="fas fa-fw fa-award"></i>
+          <i class="bi bi-basket"></i>
           <span>Chart</span></a>
       </li>
+
+
 
       {{-- <!-- Divider --> --}}
       {{-- <hr class="sidebar-divider"> --}}
@@ -93,7 +100,12 @@
         <i class="fas fa-fw fa-arrow-right"></i>
           {{ __('Logout') }}</a>  --}}
 
-          <form action="{{ route('logout') }}" onsubmit="Yakin mau Logout ?')" method="post">
+          <div class="sidebar-heading">
+            <li class="nav-item active">
+                      Logout
+          </div>
+
+          <form action="{{ route('logout') }}"onclick="return confirm('{{Auth::user()->username}} Yakin Ingin Logout??')" method="post">
             @csrf
             <button type="submit" class="btn btn-get-started btn-get-started-blue text-white">Logout</button>
         </form>
