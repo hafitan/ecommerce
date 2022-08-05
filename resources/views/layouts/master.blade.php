@@ -55,7 +55,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      @if ($level == "ADMIN")
+      @if( auth()->user()->role == '1')
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('category') }}">
           <i class="fas fa-fw fa-archive"></i>

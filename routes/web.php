@@ -49,3 +49,5 @@ Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('category', CategoryController::class);
 });
 
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
