@@ -55,7 +55,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
+      @if( auth()->user()->role == '1')      <li class="nav-item active">
         <a class="nav-link" href="{{ url('category') }}">
           <i class="fas fa-fw fa-archive"></i>
           <span>Category</span></a>
@@ -76,7 +76,7 @@
           <span>Chart</span></a>
       </li>
 
-
+@endif
 
       {{-- <!-- Divider --> --}}
       {{-- <hr class="sidebar-divider"> --}}
