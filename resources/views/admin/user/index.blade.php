@@ -57,16 +57,21 @@
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>
-                    <td width="800px">Category</td>
+                    <td width="800px">username</td>
+                    <td width="800px">email</td>
+                    <td width="800px">role</td>
                     <td colspan="2" width="100px">Action</td>
                 </tr>
                     @php
                         $i = 0;
                     @endphp
-                    @foreach($category as $key => $p)
+                    @foreach($user as $key => $p)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $p->category_product }}</td>
+                    <td>{{ $p->username }}</td>
+                    <td>{{ $p->email }}</td>
+                    <td>{{ $p->role }}</td>
+
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
                         <form  action="{{ route('category.destroy', $p->id) }}" method="POST">

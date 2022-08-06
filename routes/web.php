@@ -38,18 +38,12 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('order', OrderController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('user', UserController::class);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::group(['middleware' => 'auth','admin'], function(){
-    Route::resource('product', ProductController::class);
-});
-//Route::post('product' , [App\Http\Controllers\ProductController::class , 'restock']);
-Route::group(['middleware' => 'auth','admin'], function(){
-    Route::resource('category', CategoryController::class);
-});
-
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+// route admin dashboard
+Route::get('adminHome', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
