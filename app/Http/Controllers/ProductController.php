@@ -55,17 +55,26 @@ class ProductController extends Controller
                     'category' => 'required'
                 ]);
 
-                 
+
         Product::create($request->all());
-        return redirect()->route('admin.product.index')
+        return redirect()->route('product.index')
         ->with('success' , 'Data berhasil ditambah');
-        
+
         break;
 
         default:
         return redirect()->back()->with('danger' , 'Data sudah ada');
 
         }
+
+        // if($cek == ''){
+        //     $request->validate([
+        //         'name' => 'required',
+        //         'stock' => 'required',
+        //         'price' => 'required',
+        //         'category' => 'required',
+        //     ]);
+        // }
     }
 
     /**
@@ -76,7 +85,7 @@ class ProductController extends Controller
      */
     public function show(Request $request)
     {
-       
+
     }
 
     /**
@@ -111,8 +120,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('admin.product.index')
+        return redirect()->route('product.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
-    
+
 }

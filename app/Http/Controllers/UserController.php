@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category;
-use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+use Illuminate\Http\Request;
+use App\Models\User;
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view('admin.category.index' , compact('category'));
+        $user = User::all();
+        return view('admin.user.index', compact('user'));
     }
 
     /**
@@ -35,13 +36,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'category_product' => 'required',
-        ]);
-
-        Category::create($request->all());
-        return redirect()->route('category.index')
-        ->with('success' , 'Data berhasil ditambah');
+        //
     }
 
     /**
@@ -75,14 +70,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request , rules: [
-            'category_product' => 'required',
-        ]);
-        $barang = Category::find($id);
-        $barang->category_product= $request->category_product;
-        $barang->save();
-
-        return redirect('category');
+        //
     }
 
     /**
@@ -91,10 +79,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
-        return redirect()->route('category.index')
-            ->with('success' , 'Data berhasil dihapus!!');
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'berhasil hapus');
     }
 }

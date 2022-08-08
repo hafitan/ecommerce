@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('home') }}">
+        <a class="nav-link" href="{{ url('adminHome') }}">
           <i class="fas fa-fw fa-bell"></i>
           <span>Dashboard</span></a>
       </li>
@@ -55,9 +55,13 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+
       @if( auth()->user()->role == '1')    
        
       <li class="nav-item active">
+        @endif
+      @if( auth()->user()->role == '1')
+        <li class="nav-item active">
         <a class="nav-link" href="{{ url('category') }}">
           <i class="fa fa-archive" aria-hidden="true"></i>
           <span>Category</span></a>
@@ -76,6 +80,11 @@
         <a class="nav-link" href="{{ url('chart') }}">
           <i class="bi bi-basket"></i>
           <span>Chart</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url('user') }}">
+          <i class="bi bi-person"></i>
+          <span>User</span></a>
       </li>
 
 @endif
