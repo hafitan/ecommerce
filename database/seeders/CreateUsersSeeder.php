@@ -22,6 +22,12 @@ class CreateUsersSeeder extends Seeder
                 'password' => bcrypt('12345678')
             ],
             [
+                'username' => 'oryza',
+                'email' => 'oryza@gmail.com',
+                'role' => 1,
+                'password' => bcrypt('12345678')
+            ],
+            [
                 'username'=>'anval',
                'email'=>'anval@gmail.com',
                 'role'=>'0',
