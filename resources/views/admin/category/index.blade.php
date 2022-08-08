@@ -44,6 +44,7 @@
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
                         </div>
+                    </div>
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>

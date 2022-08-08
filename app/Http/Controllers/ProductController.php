@@ -108,30 +108,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
-        switch($cek){
-            case false:
-                $request->validate([
-                    'name' => 'required',
-                    'stock' => 'required',
-                    'price' => 'required',
-                    'category' => 'required'
-                ]);
-     
-        $product = Product::find($id);
-        $product->name = $request->name;
-        $product->stock = $request->stock;
-        $product->price = $request->price;
-        $product->category = $request->category;
-        $product->save();
-        
-        return redirect()->route('product.index')
-            ->with('success', 'Data berhasil dirubah');
-        
-        break;
-        default:
-        return redirect()->back()->with('danger' , 'Data tidak boleh sama!!');
-    }
+        $this->validate($request , rules: [
+            'name' => 'required',
+            'stock' => 'required',
+            'price' => 'required',
+            'category' => 'required',
+        ]);
+        $barang = Product::find($id);
+        $barang->name = $request->name;
+        $barang->stock = $request->stock;
+        $barang->price = $request->price;
+        $barang->category = $request->category ;
+        $barang->save();
+
+        // Product::where('id',$request->id)->update([
+        //     'name' => $request->name,
+        //     'stock' => $request->stock,
+        //     'price' => $request->price,
+        //     'category' => $request->category
+        // ]);
+        return redirect()->route('product.index');
     }
 
     /**

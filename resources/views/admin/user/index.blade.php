@@ -45,9 +45,7 @@
                                               <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
-                                    </div>
 
-                                    <div class="modal-body">
                                         <div class="mb-3">
                                             <label class="form-label">email</label>
                                             <input type="email" class="form-control" name="email" required>
@@ -55,19 +53,21 @@
                                               <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
-                                    </div>
 
-                                    <div class="modal-body">
+
                                         <div class="mb-3">
                                             <label class="form-label">role</label>
-                                            <input type="text" class="form-control" name="role" required>
-                                            @error('role')
-                                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                                            @enderror
+                                            <select type="" class="form-control" name="role" required>
+                                                <option selected disabled value="">--- Pilih ---</option>
+                                                @foreach($user as $key => $c)
+                                                    <option value="{{ $c->role}}">{{ $c->role }}</option>
+                                                @endforeach
+                                                @error('role')
+                                                    <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                @enderror
+                                            </select>
                                         </div>
-                                    </div>
 
-                                    <div class="modal-body">
                                         <div class="mb-3">
                                             <label class="form-label">password</label>
                                             <input type="password" class="form-control" name="password" required>
@@ -75,8 +75,9 @@
                                               <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
-                                    </div>
 
+
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>
