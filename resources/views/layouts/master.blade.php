@@ -55,9 +55,11 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      @if( auth()->user()->role == '1')      <li class="nav-item active">
+      @if( auth()->user()->role == '1')    
+       
+      <li class="nav-item active">
         <a class="nav-link" href="{{ url('category') }}">
-          <i class="fas fa-fw fa-archive"></i>
+          <i class="fa fa-archive" aria-hidden="true"></i>
           <span>Category</span></a>
       </li>
       <li class="nav-item active">
