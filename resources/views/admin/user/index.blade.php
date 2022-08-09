@@ -4,55 +4,89 @@
 
 <div id="layoutSidenav_content">
     <main>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Halaman Admin E-Commerce</li>
-            </ol>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Halaman Admin E-Commerce</li>
+        </ol>
             <div>
                 <div class="container-fluid">
                     <h1 class="mt-4">user</h1>
                     @if ($message = Session::get('success'))
-                    <br><br>
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
+                        <br><br>
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
                     @endif
 
                     @if ($message = Session::get('danger'))
-                <br><br>
-                <div class="alert alert-danger">
-                    <p>{{ $message }}</p>
-                </div>
-                @endif
-            <button type="button" class="btn btn-primary mt-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="bi bi-plus-circle">Tambah</i>
-            </button>
-
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form method="POST" action="{{ route('user.store') }}">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">user</label>
-                            <input type="name" class="form-control" name="user_product" required>
-                            @error('user')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
+                        <br><br>
+                        <div class="alert alert-danger">
+                            <p>{{ $message }}</p>
                         </div>
-                  <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                  </div>
-                </form>
-                </div>
+                    @endif
+                    <button type="button" class="btn btn-primary mt-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="bi bi-plus-circle">Tambah</i>
+                    </button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="POST" action="{{ route('user.store') }}">
+                                    @csrf
+
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">username</label>
+                                            <input type="text" class="form-control" name="username" required>
+                                            @error('username')
+                                              <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">email</label>
+                                            <input type="email" class="form-control" name="email" required>
+                                            @error('email')
+                                              <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label class="form-label">role</label>
+                                            <select type="" class="form-control" name="role" required>
+                                                <option selected disabled value="">--- Pilih ---</option>
+                                                @foreach($user as $key => $c)
+                                                    <option value="{{ $c->role}}">{{ $c->role }}</option>
+                                                @endforeach
+                                                @error('role')
+                                                    <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                @enderror
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">password</label>
+                                            <input type="password" class="form-control" name="password" required>
+                                            @error('password')
+                                              <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
         <br>
             <table class="table table-success table-striped">
                 <tr>
@@ -82,29 +116,48 @@
                         </form>
                     </td>
                     <div class="modal fade" id="modalUpdate{{$p->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ route('user.update', $p->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-3">
-                            <label class="form-label">user</label>
-                            <input type="name" class="form-control" name="user_product" value="{{ $p->username }}" required>
-                            @error('user')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('user.update', $p->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <div class="mb-3">
+                                            <label class="form-label">username</label>
+                                            <input type="text" class="form-control" name="username" value="{{ $p->username }}" required>
+                                            @error('username')
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">emain</label>
+                                            <input type="email" class="form-control" name="email" value="{{ $p->email }}" required>
+                                            @error('email')
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">password</label>
+                                            <input type="password" class="form-control" name="user_product" value="{{ $p->password }}" required>
+                                            @error('password')
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </form>
                         </div>
-                    </div>
                     </div>
                 </tr>
                     @endforeach

@@ -26,6 +26,7 @@
             <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
+            <br><br>
             <div>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -39,28 +40,28 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Product</label>
-                            <input type="name" class="form-control" name="name">
+                            <input type="name" class="form-control" name="name" required>
                             @error('name')
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Stock</label>
-                            <input type="number" class="form-control" name="stock" min="0">
+                            <input type="number" class="form-control" name="stock" min="1" required>
                             @error('stock')
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Price</label>
-                            <input type="number" class="form-control" name="price" min="0">
+                            <input type="number" class="form-control" name="price" min="1" required>
                             @error('price')
                               <span class="text-danger">Field ini tidak boleh kosong</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Category</label>
-                            <select type="name" class="form-control" name="category">
+                            <select type="name" class="form-control" name="category" required>
                                 <option selected disabled value=""><--- Pilih ---></option>
                                 @foreach($category as $key => $c)
                                 <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>
@@ -82,10 +83,10 @@
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>
-                    <td width="230px">Name</td>
+                    <td width="400px">Name</td>
                     <td>Stock</td>
                     <td>Price</td>
-                    <td>Category</td>
+                    <td width="200px">Category</td>
                     <td colspan="2" width="100pxs">Action</td>
                 </tr>
                     @php
@@ -98,7 +99,7 @@
                     <td>{{ $p->stock}}</td>
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->category }}</td>
-                    <td><a type="button" class="btn btn-primary">Ubah</a></td>
+                    <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
                         <form  action="{{ route('product.destroy', $p->id) }}" method="POST">
                           @csrf
@@ -106,29 +107,61 @@
 
                           <button onclick="return confirm('Yakin Hapus data ini??')" type="submit" class="btn btn-danger">Hapus</button>
                         </form>
-                        <div class="modal fade" id="modalUpdate{{$p->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </td>
+                    <div class="modal fade" id="modalUpdate{{$p->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('product.update', $p->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Product</label>
+                                            <input type="name" class="form-control" name="name" value="{{ $p->name }}" required>
+                                            @error('name')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Stock</label>
+                                            <input type="number" class="form-control" name="stock" min="1" value="{{ $p->stock }}" required>
+                                            @error('stock')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Price</label>
+                                            <input type="number" class="form-control" name="price" min="1" value="{{ $p->price }}" required>
+                                            @error('price')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Category</label>
+                                            <select type="" class="form-control" name="category" required>
+                                                <option value="">-- Pilih --</option>
+                                                @foreach($category as $key => $c)
+                                                <option value="{{ $c->category_product }}" @if($p->category == $c->category_product)selected @endif>{{ $c->category_product }}</option>
+                                                @endforeach
+                                            @error('category')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                            </select>
+                                        </div>
+
                                     </div>
-                                    <div class="modal-body">
-                                        <form action="{{ route('product.update', $p->id) }}" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="mb-3">
-                                                <label class="form-label">Category</label>
-                                                <input type="name" class="form-control" name="name" value="{{ $p->name }}" required>
-                                                @error('category')
-                                                    <span class="text-danger">Field ini tidak boleh kosong</span>
-                                                @enderror
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

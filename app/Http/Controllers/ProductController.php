@@ -108,7 +108,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request , rules: [
+            'name' => 'required',
+            'stock' => 'required',
+            'price' => 'required',
+            'category' => 'required',
+        ]);
+        $barang = Product::find($id);
+        $barang->name = $request->name;
+        $barang->stock = $request->stock;
+        $barang->price = $request->price;
+        $barang->category = $request->category ;
+        $barang->save();
+
+        // Product::where('id',$request->id)->update([
+        //     'name' => $request->name,
+        //     'stock' => $request->stock,
+        //     'price' => $request->price,
+        //     'category' => $request->category
+        // ]);
+        return redirect()->route('product.index');
     }
 
     /**
