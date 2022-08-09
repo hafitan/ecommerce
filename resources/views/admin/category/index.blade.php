@@ -1,32 +1,33 @@
-@extends('layouts.master',['role' => '1'])
+@extends('layouts.master')
 
 @section('content')
 
 <div id="layoutSidenav_content">
     <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Category</h1>
+            @if ($message = Session::get('success'))
+            <br><br>
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+            @endif
+
+            @if ($message = Session::get('danger'))
+        <br><br>
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Halaman Admin E-Commerce</li>
             </ol>
             <div>
-                <div class="container-fluid">
-                    <h1 class="mt-4">Category</h1>
-                    @if ($message = Session::get('success'))
-                    <br><br>
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                    @endif
-
-                    @if ($message = Session::get('danger'))
-                <br><br>
-                <div class="alert alert-danger">
-                    <p>{{ $message }}</p>
-                </div>
-                @endif
-            <button type="button" class="btn btn-primary mt-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
-
+            <br><br>
+            <div>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -45,16 +46,15 @@
                             @enderror
                         </div>
                     </div>
-                  <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                  </div>
-                </form>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                    </form>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
-        <br>
+    </div>
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>
@@ -101,10 +101,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </td>
                 </tr>
-                    @endforeach
+                         @endforeach
             </table>
         </div>
 
