@@ -19,7 +19,7 @@ use App\Http\Controllers\HomeController;
 Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);
 
 
-Route::get('/', function () {
+Route::get('/adminLogin', function () {
     return view('welcome');
 });
 Auth::routes();

@@ -64,10 +64,10 @@
                             <select type="name" class="form-control" name="category" required>
                                 <option selected disabled value=""><--- Pilih ---></option>
                                 @foreach($category as $key => $c)
-                                <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>
+                                    <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>
                                 @endforeach
                                 @error('category')
-                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                    <span class="text-danger">Field ini tidak boleh kosong</span>
                                 @enderror
                             </select>
                         </div>
