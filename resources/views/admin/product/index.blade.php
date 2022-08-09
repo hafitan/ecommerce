@@ -35,7 +35,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="POST" action="{{ route('product.store') }}">
+                    <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
@@ -71,6 +71,13 @@
                                 @enderror
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">image</label>
+                            <input type="file" class="form-control" name="image" placeholder="Choose image" id="image">
+                            @error('image')
+                              <span class="text-danger">Field ini tidak boleh kosong</span>
+                            @enderror
+                        </div>
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
@@ -83,10 +90,11 @@
             <table class="table table-success table-striped">
                 <tr>
                     <td>NO</td>
-                    <td width="400px">Name</td>
+                    <td>Name</td>
                     <td>Stock</td>
                     <td>Price</td>
-                    <td width="200px">Category</td>
+                    <td>Category</td>
+                    <td>image</td>
                     <td colspan="2" width="100pxs">Action</td>
                 </tr>
                     @php
@@ -99,6 +107,7 @@
                     <td>{{ $p->stock}}</td>
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->category }}</td>
+                    <td><img src="{{asset('public/image/'.$p->image)}}" style="max-height: 150px; max-width: 150px;" ></td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
                         <form  action="{{ route('product.destroy', $p->id) }}" method="POST">
