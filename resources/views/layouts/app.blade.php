@@ -31,7 +31,7 @@
                         <img src="{{url('landing/assets/images/logo.png')}}" alt="website logo">
                         <span>E-Commerce</span>
                     </a>
-    
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                         <span><img src="{{url('landing/assets/images/menu.png')}}" alt=""></span>
                     </button>
@@ -40,9 +40,9 @@
                         <ul class="navbar-nav">
 
                             @guest
-                            <li class="nav-item" style="float: left important!">
+                            {{-- <li class="nav-item" style="float: left important!">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            </li> --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -62,7 +62,7 @@
                                 </div>
                             </li>
                         @endguest
-                            
+
                         </ul>
                     </div>
                 </nav>

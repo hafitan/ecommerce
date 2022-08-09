@@ -45,36 +45,57 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
-        switch($cek){
-            case false:
-                $request->validate([
-                    'name' => 'required',
-                    'stock' => 'required',
-                    'price' => 'required',
-                    'category' => 'required'
-                ]);
+        // dd($request->all());
+        // $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
+        // switch($cek){
+        //     case false:
+        //         $request->validate([
+        //             'name' => 'required',
+        //             'stock' => 'required',
+        //             'price' => 'required',
+        //             'category' => 'required',
+        //         ]);
 
 
-        Product::create($request->all());
-        return redirect()->route('product.index')
-        ->with('success' , 'Data berhasil ditambah');
+        // Product::create($request->all());
+        // return redirect()->route('product.index')
+        // ->with('success' , 'Data berhasil ditambah');
 
-        break;
+        // break;
 
-        default:
-        return redirect()->back()->with('danger' , 'Data sudah ada');
+        // default:
+        // return redirect()->back()->with('danger' , 'Data sudah ada');
 
+        // }
+
+            $this->validate($request, [
+                'name' => 'required',
+                'stock' => 'required',
+                'price' => 'required',
+                'category' => 'required',
+                'image' => 'required|image|mimes:png,jpg,jpeg',
+            ]);
+             //upload image
+        $image = $request->file('image');
+        // dd($image->getClientOriginalName());
+        $image->move('public/image', $image->getClientOriginalName());
+
+        $blog = Product::create([
+            'image'     => $image->getClientOriginalName(),
+            'name'     => $request->name,
+            'stock'   => $request->stock,
+            'price'   => $request->price,
+            'category'   => $request->category,
+        ]);
+
+        if($blog){
+            //redirect dengan pesan sukses
+            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('product.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
 
-        // if($cek == ''){
-        //     $request->validate([
-        //         'name' => 'required',
-        //         'stock' => 'required',
-        //         'price' => 'required',
-        //         'category' => 'required',
-        //     ]);
-        // }
     }
 
     /**
@@ -113,6 +134,7 @@ class ProductController extends Controller
             'stock' => 'required',
             'price' => 'required',
             'category' => 'required',
+            'image'     => 'required|image|mimes:png,jpg,jpeg',
         ]);
         $barang = Product::find($id);
         $barang->name = $request->name;

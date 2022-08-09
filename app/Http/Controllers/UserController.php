@@ -83,7 +83,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $this->validate($request, rules: [
+        //     'username' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        // ]);
+
+        $user = User::find($id);
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', 'berhasil ubah');
     }
 
     /**
