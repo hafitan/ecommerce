@@ -19,7 +19,7 @@ use App\Http\Controllers\HomeController;
 Route::get('product' , [App\Http\Controllers\ProductController::class, 'index']);
 
 
-Route::get('/adminLogin', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
@@ -47,3 +47,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // route admin dashboard
 Route::get('adminHome', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
+Route::resource('shop' , ShopController::class);
