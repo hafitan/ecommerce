@@ -1,16 +1,16 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> --}}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 
     <!-- Bootstrap CSS -->
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 
     <!-- Custom CSS -->
-    {{-- <link rel="stylesheet" href="{{url('landing/css/style.css')}}">
+     <link rel="stylesheet" href="{{url('landing/css/style.css')}}">
 
     <title>E-Commerce</title>
 </head>
@@ -63,11 +63,11 @@
                 <img src="{{url('landing/assets/images/mainbenner.png')}}" alt="Team process banner">
             </div>
         </div>
-    </div> --}}
+    </div> 
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -78,12 +78,11 @@
     </script>
 </body>
 
-</html> --}}
+</html> 
 
 
 
-
-@extends('layouts.app')
+{{--  
 
 @section('content')
 
@@ -135,7 +134,7 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="form-group row">
+                          <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -145,7 +144,7 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div> 
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
@@ -153,11 +152,11 @@
                                         {{ __('Login') }}
                                     </button>
 
-                                    {{-- @if (Route::has('password.request'))
+                                   @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
-                                    @endif --}}
+                                    @endif 
                                 </div>
                             </div>
                         </form>
@@ -166,6 +165,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
-@endsection
+@endsection  --}}
