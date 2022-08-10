@@ -1,4 +1,4 @@
-@extends('layouts.master',['level' => 'ADMIN'])
+@extends('layouts.master')
 
 @section('content')
     <div class="row">
