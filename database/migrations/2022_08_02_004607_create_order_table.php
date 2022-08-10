@@ -20,6 +20,7 @@ class CreateOrderTable extends Migration
             $table->integer('qty');
             $table->date('date');
             $table->string('price');
+            $table->string('image')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });
