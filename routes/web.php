@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
 Route::post('restock' , 'ProductController@restock')->name('restock');
+Route::get('single/{id}' , 'ShopController@single')->name('single');
 
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('order', OrderController::class);
