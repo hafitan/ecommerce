@@ -74,6 +74,8 @@ class ProductController extends Controller
                 'price' => 'required',
                 'category' => 'required',
                 'image' => 'required|image|mimes:png,jpg,jpeg',
+                'brand' => 'required',
+                'desc' => 'required'
             ]);
              //upload image
         $image = $request->file('image');
@@ -88,11 +90,15 @@ class ProductController extends Controller
                 'stock'   => $request->stock,
                 'price'   => $request->price,
                 'category'   => $request->category,
+                'brand' => $request->brand,
+                'desc' => $request->desc
             ]);
         }else{
             $cek->stock += $request->stock;
             $cek->price = $request->price;
             $cek->image = $request->image;
+            $cek->brand = $request->brand;
+            $cek->desc = $request->desc;
             $cek->save();
         }
             return redirect()->route('product.index')->with('success', 'Berhasil menambahkan');
@@ -137,6 +143,8 @@ class ProductController extends Controller
             'price' => 'required',
             'category' => 'required',
             'image'     => 'required|image|mimes:png,jpg,jpeg',
+            'brand' => 'required',
+            'desc' => 'required'
         ]);
 
         //upload image
@@ -150,6 +158,8 @@ class ProductController extends Controller
             'stock' => $request->stock,
             'price' => $request->price,
             'category' => $request->category,
+            'brand' => $request->brand,
+            'desc' => $request->desc
         ]);
         if($upload){
             //redirect dengan pesan sukses

@@ -85,8 +85,9 @@ class ShopController extends Controller
     public function single($id)
     {
     $product = Product::find($id);
+    $play = Product::all();
 
-    return view('admin.shop.single' , compact('product'));
+    return view('admin.shop.single' , compact('product' , 'play'));
 
     }
 }

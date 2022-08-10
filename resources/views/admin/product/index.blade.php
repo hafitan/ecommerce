@@ -84,6 +84,20 @@
                                         <span class="text-danger">Field ini tidak boleh kosong</span>
                                         @enderror
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">brand</label>
+                                        <input type="name" name="brand" class="form-control"  required>
+                                        @error('brand')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">deskripsi</label>
+                                        <input type="text" name="desc" class="form-control"  required>
+                                        @error('desc')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -143,6 +157,8 @@
                     <td>Price</td>
                     <td>Category</td>
                     <td>image</td>
+                    <td>brand</td>
+                    <td>desc</td>
                     <td colspan="2" width="100pxs">Action</td>
                 </tr>
                     @php
@@ -156,6 +172,8 @@
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->category }}</td>
                     <td><img src="{{asset('public/image/'.$p->image)}}" style="max-height: 150px; max-width: 150px;" ></td>
+                    <td>{{ $p->brand}}</td>
+                    <td>{{ $p->desc}}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
                         <form  action="{{ route('product.destroy', $p->id) }}" method="POST">
