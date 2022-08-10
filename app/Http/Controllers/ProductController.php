@@ -80,21 +80,22 @@ class ProductController extends Controller
         // dd($image->getClientOriginalName());
         $image->move('public/image', $image->getClientOriginalName());
 
-        $blog = Product::create([
-            'image'     => $image->getClientOriginalName(),
-            'name'     => $request->name,
-            'stock'   => $request->stock,
-            'price'   => $request->price,
-            'category'   => $request->category,
-        ]);
-
-        if($blog){
-            //redirect dengan pesan sukses
-            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        $cek = Product::where('name', $request->name)->first();
+        if($cek == NULL){
+            Product::create([
+                'image'     => $image->getClientOriginalName(),
+                'name'     => $request->name,
+                'stock'   => $request->stock,
+                'price'   => $request->price,
+                'category'   => $request->category,
+            ]);
         }else{
-            //redirect dengan pesan error
-            return redirect()->route('product.index')->with(['error' => 'Data Gagal Disimpan!']);
+            $cek->stock += $request->stock;
+            $cek->price = $request->price;
+            $cek->image = $request->image;
+            $cek->save();
         }
+            return redirect()->route('product.index')->with('success', 'Berhasil menambahkan');
 
     }
 
@@ -106,7 +107,7 @@ class ProductController extends Controller
      */
     public function show(Request $request)
     {
-
+        //
     }
 
     /**
@@ -124,31 +125,39 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        $this->validate($request , rules: [
+        // dd($request->all());
+        $this->validate($request ,[
             'name' => 'required',
             'stock' => 'required',
             'price' => 'required',
             'category' => 'required',
             'image'     => 'required|image|mimes:png,jpg,jpeg',
         ]);
-        $barang = Product::find($id);
-        $barang->name = $request->name;
-        $barang->stock = $request->stock;
-        $barang->price = $request->price;
-        $barang->category = $request->category ;
-        $barang->save();
 
-        // Product::where('id',$request->id)->update([
-        //     'name' => $request->name,
-        //     'stock' => $request->stock,
-        //     'price' => $request->price,
-        //     'category' => $request->category
-        // ]);
+        //upload image
+        $image = $request->file('image');
+        // dd($image->getClientOriginalName());
+        $image->move('public/image', $image->getClientOriginalName());
+
+        $upload = $product->update([
+            'image' => $image->getClientOriginalName(),
+            'name' => $request->name,
+            'stock' => $request->stock,
+            'price' => $request->price,
+            'category' => $request->category,
+        ]);
+        if($upload){
+            //redirect dengan pesan sukses
+            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Diubah!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('product.index')->with(['error' => 'Data Gagal Diubah!']);
+        }
         return redirect()->route('product.index');
     }
 
@@ -163,6 +172,14 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index')
             ->with('success' , 'Data berhasil dihapus!!');
+    }
+
+    public function restock(Request $request)
+    {
+        $barang = Product::find($request->id);
+        $barang->stock += $request->stock;
+        $barang->save();
+        return redirect()->route('product.index')->with('success', 'berhasil manembah stock');
     }
 
 }

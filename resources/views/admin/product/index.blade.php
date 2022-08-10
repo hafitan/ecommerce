@@ -23,68 +23,116 @@
                 <li class="breadcrumb-item active">Halaman Admin E-Commerce</li>
             </ol>
             <div>
+            {{-- button add --}}
             <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
-            <br><br>
+            {{-- button restock --}}
+            {{-- <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleRestock">
+                <i class="bi bi-plus-circle">restock</i>
+            </button> --}}
+
             <div>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                {{-- add modal --}}
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Product</label>
+                                        <input type="name" class="form-control" name="name" required>
+                                        @error('name')
+                                        <span class="text-danger">Field ini tidak boleh kosong</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Stock</label>
+                                        <input type="number" class="form-control" name="stock" min="1" required>
+                                        @error('stock')
+                                        <span class="text-danger">Field ini tidak boleh kosong</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Price</label>
+                                        <input type="number" class="form-control" name="price" min="1" required>
+                                        @error('price')
+                                        <span class="text-danger">Field ini tidak boleh kosong</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Category</label>
+                                        <select type="name" class="form-control" name="category" required>
+                                            <option selected disabled value=""><--- Pilih ---></option>
+                                            @foreach($category as $key => $c)
+                                                <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>
+                                            @endforeach
+                                            @error('category')
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">image</label>
+                                        <input type="file" class="form-control" name="image" placeholder="Choose image" id="image">
+                                        @error('image')
+                                        <span class="text-danger">Field ini tidak boleh kosong</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Product</label>
-                            <input type="name" class="form-control" name="name" required>
-                            @error('name')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Stock</label>
-                            <input type="number" class="form-control" name="stock" min="1" required>
-                            @error('stock')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" class="form-control" name="price" min="1" required>
-                            @error('price')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <select type="name" class="form-control" name="category" required>
-                                <option selected disabled value=""><--- Pilih ---></option>
-                                @foreach($category as $key => $c)
-                                    <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>
-                                @endforeach
-                                @error('category')
-                                    <span class="text-danger">Field ini tidak boleh kosong</span>
-                                @enderror
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">image</label>
-                            <input type="file" class="form-control" name="image" placeholder="Choose image" id="image">
-                            @error('image')
-                              <span class="text-danger">Field ini tidak boleh kosong</span>
-                            @enderror
-                        </div>
-                  <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                  </div>
-                </form>
                 </div>
-                </div>
-            </div>
+
+                {{-- restock modal --}}
+                    {{-- <div class="modal fade" id="exampleRestock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                    <form method="POST" action="{{ route('product.restock') }}">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label class="form-label">name</label>
+                                                <select name="id" id="" class="form-control" required>
+                                                    <option value="">-- Pilih --</option>
+                                                    @foreach ($product as $p)
+                                                        <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('id')
+                                                    <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">stock</label>
+                                                <input type="number" name="stock" class="form-control" min="1" required>
+                                                @error('stock')
+                                                    <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div> --}}
+                {{-- end restcok --}}
+
             </div>
         </div>
             <table class="table table-success table-striped">
@@ -164,6 +212,15 @@
                                             <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                             </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Image</label>
+                                            <input type="file" name="image" accept="image/*" class="form-control" value="{{ asset('public/image/'.$p->image) }}" placeholder="Choose image" id="image" >
+                                            <img src="" width="300px" alt="">
+                                            @error('image')
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
                                         </div>
 
                                     </div>
