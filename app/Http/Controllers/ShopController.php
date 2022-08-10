@@ -82,4 +82,11 @@ class ShopController extends Controller
     {
         //
     }
+    public function single($id)
+    {
+    $product = Product::find($id);
+
+    return view('admin.shop.single' , compact('product'));
+
+    }
 }

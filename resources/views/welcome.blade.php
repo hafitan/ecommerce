@@ -21,7 +21,7 @@
             <nav class="navbar navbar-expand-lg navbar-light head__custom-nav">
                 <a class="navbar-brand d-flex align-items-center" href="{{url('/    ')}}">
                     <img src="{{url('landing/assets/images/logo.png')}}" alt="website logo">
-                    <span>E-Commerce</span>
+                    <span>Adera Clothes</span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -55,8 +55,8 @@
     <div class="container">
         <div class="row custom-section d-flex align-items-center">
             <div class="col-12 col-lg-4">
-                <h2>E-<i>Commerce</i> </h2>
-                <p>Aplikasi Platform Jual Beli Produk Di Suatu Website Secara Online.</p>
+                <h2><i>Adera</i> </h2>
+                <p>Aplikasi Platform Jual Beli Produk Di Website Secara Online.</p>
                 <a href="{{url('shop')}}">Yuk Mulai</a>
             </div>
             <div class="col-12 col-lg-8">
