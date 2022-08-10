@@ -28,9 +28,9 @@
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
             {{-- button restock --}}
-            {{-- <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleRestock">
+            <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleRestock">
                 <i class="bi bi-plus-circle">restock</i>
-            </button> --}}
+            </button>
 
             <div>
                 {{-- add modal --}}
@@ -94,14 +94,14 @@
                 </div>
 
                 {{-- restock modal --}}
-                    {{-- <div class="modal fade" id="exampleRestock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleRestock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                    <form method="POST" action="{{ route('product.restock') }}">
+                                    <form method="POST" action="/restock">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="mb-3">
@@ -130,7 +130,7 @@
                                     </form>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 {{-- end restcok --}}
 
             </div>
