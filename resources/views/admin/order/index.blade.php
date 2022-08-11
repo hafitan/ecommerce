@@ -71,13 +71,6 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">image</label>
-                                    <input type="file" class="form-control" name="image" placeholder="Choose image" id="image">
-                                    @error('image')
-                                        <span class="text-danger">Field ini tidak boleh kosong</span>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
                                     <label class="form-label">status</label>
                                     <select name="status" class="form-control" id="" required>
                                         <option value="">-- Pilih --</option>
@@ -104,7 +97,6 @@
                     <td>price</td>
                     <td>category</td>
                     <td>date</td>
-                    <td>image</td>
                     <td>status</td>
                     <td colspan="2" width="100px">Action</td>
                 </tr>
@@ -119,7 +111,6 @@
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->category }}</td>
                     <td>{{ $p->date }}</td>
-                    <td><img src="{{asset('public/image/'.$p->image)}}" style="max-height: 150px; max-width: 150px;" ></td>
                     <td>{{ $p->status }}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>

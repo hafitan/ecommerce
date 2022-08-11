@@ -19,8 +19,8 @@ class CreateOrderTable extends Migration
             $table->string('category_id');
             $table->integer('qty');
             $table->date('date');
-            $table->string('price');
-            $table->string('image')->nullable();
+            $table->integer('price');
+            $table->integer('total');
             $table->string('status')->nullable();
             $table->timestamps();
         });
