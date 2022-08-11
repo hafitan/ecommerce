@@ -14,7 +14,7 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $product = Product::all();
         return view('admin.shop.index' , compact('product'));
     }
@@ -26,7 +26,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -35,7 +35,7 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         $request->validate([
             'name' => 'required',
@@ -45,24 +45,24 @@ class ShopController extends Controller
             'total' => 'required',
             'date' => 'required',
             'status' => 'required'
-  
+
         ]);
-        $barang = Product::find($request->product_id);
-        // dd($barang);
-        if($request->qty > $barang->stock){
+        $product = Product::find($request->product_id);
+        // dd($product);
+        if($request->qty > $product->stock){
             return redirect()->back()->with('danger', 'qty tidak cukup');
         }
-        
+
         Order::create([
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
             'category' => $request->category,
-            'total' => $request->qty * $barang->price,
+            'total' => $request->qty * $product->price,
             'date' => Carbon::Today(),
             'status' => $request->status
 
-            
+
         ]);
 
         return redirect()->route('admin.shop.index')
@@ -123,33 +123,28 @@ class ShopController extends Controller
     }
 
     public function chart(Request $request){
-        $request->validate([
-            'name' => 'required',
-            'qty' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-            'total' => 'required',
-            'date' => 'required',
-            'status' => 'required'
-  
-        ]);
-        $barang = Product::find($request->product_id);
-        // dd($barang);
-        if($request->qty > $barang->stock){
-            return redirect()->back()->with('danger', 'qty tidak cukup');
-        }
-        
+        // $request->validate([
+        //     'name' => 'required',
+        //     'qty' => 'required',
+        //     'price' => 'required',
+        //     'category' => 'required',
+        //     'total' => 'required',
+        //     'date' => 'required',
+        //     'status' => 'required'
+
+        // $barang = Product::find($request->product_id);
+
         Order::create([
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
             'category' => $request->category,
-            'total' => $request->qty * $barang->price,
+            'total' => $request->qty * $request->price,
             'date' => Carbon::Today(),
             'status' => $request->status
-
-            
         ]);
+        // $barang->stock -= $request->qty;
+        // $barang->save();
 
         return redirect()->route('shop.index')
     ->with('success','Berhasil Menyimpan !');

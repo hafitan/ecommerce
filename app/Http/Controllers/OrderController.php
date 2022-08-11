@@ -53,7 +53,7 @@ class OrderController extends Controller
         $barang = Product::find($request->product_id);
         // dd($barang);
         if($request->qty > $barang->stock){
-            return redirect()->back()->with('danger', 'qty tidak cukup');
+            return redirect()->back()->with('danger', 'stock tidak cukup');
         }
 
             Order::create([
@@ -113,6 +113,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('order.index')->with('success', 'berhasil hapus');
     }
 }

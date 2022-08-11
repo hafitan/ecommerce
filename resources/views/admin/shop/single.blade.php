@@ -132,7 +132,7 @@ https://templatemo.com/tm-559-zay-shop
                             <p class="h3 py-2">${{ $p->price }}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Stock :   {{ $p->stock }}</h6> 
+                                    <h6>Stock :   {{ $p->stock }}</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class="text-muted"><strong>{{ $p->brand }}</strong></p>
@@ -147,17 +147,17 @@ https://templatemo.com/tm-559-zay-shop
                             <form action="/chart" method="post">
                                 @csrf
                                 <div class="row">
-                                  
+
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                Quantity :           
+                                                Quantity :
                                                 <div class="mb-3">
                                                     <input type="hidden" name="category" value="{{ $p->category }}">
                                                     <input type="hidden" name="name" value="{{ $p->name }}">
                                                     <input type="hidden" name="price" value="{{ $p->price }}" id="">
                                                     <input type="hidden" name="status" value="Belum dibayar">
-                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" value="1"  required>
+                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" value="1" max="{{ $p->stock }}"  required>
                                                     @error('qty')
                                                         <span class="text-danger">Field ini tidak boleh kosong</span>
                                                     @enderror

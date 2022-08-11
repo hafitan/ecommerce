@@ -115,7 +115,7 @@
                     <td>{{ $p->status }}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
-                        <form  action="{{ route('category.destroy', $p->id) }}" method="POST">
+                        <form  action="{{ route('order.destroy', $p->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
 
