@@ -18,9 +18,8 @@ class CreateProductTable extends Migration
             $table->string('name');
             $table->integer('stock');
             $table->integer('price');
-            $table->string('category');
+            $table->string('category_id');
             $table->string('image');
-            $table->string('brand');
             $table->string('desc');
             $table->timestamps();
         });

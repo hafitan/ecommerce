@@ -16,7 +16,7 @@ class CreateChartTable extends Migration
         Schema::create('chart', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('category');
+            $table->string('category_id');
             $table->integer('qty');
             $table->date('date');
             $table->integer('price');

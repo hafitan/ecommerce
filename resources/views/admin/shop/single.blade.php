@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
 <!--
-    
+
 TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
@@ -113,15 +113,15 @@ https://templatemo.com/tm-559-zay-shop
         <div class="container pb-5">
             @foreach($play as $key => $p)
             <div class="row">
-               
+
                 <div class="col-lg-5 mt-5">
-               
+
                     <div class="card mb-3">
-                     
+
                         <img class="card-img img-fluid" src="{{asset('public/image/'.$p->image)}}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
-                       
+
                     </div>
                 </div>
                 <!-- col end -->
@@ -141,8 +141,8 @@ https://templatemo.com/tm-559-zay-shop
 
                             <h6>Description:</h6>
                             <p>{{ $p->desc }}</p>
-                        
-                       
+
+
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
@@ -180,7 +180,7 @@ https://templatemo.com/tm-559-zay-shop
                                     </div>
                                 </div>
                             </form>
-                        
+
 
                         </div>
                     </div>
@@ -190,7 +190,7 @@ https://templatemo.com/tm-559-zay-shop
     </section>
     <!-- Close Content -->
 
-   
+
 
   <!-- Start Footer -->
   <footer class="bg-dark" id="tempaltemo_footer">

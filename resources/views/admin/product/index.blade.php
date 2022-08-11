@@ -55,14 +55,14 @@
                                         <label class="form-label">Stock</label>
                                         <input type="number" class="form-control" name="stock" min="1" required>
                                         @error('stock')
-                                        <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Price</label>
                                         <input type="number" class="form-control" name="price" min="1" required>
                                         @error('price')
-                                        <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            <span class="text-danger">Field ini tidak boleh kosong</span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
@@ -85,15 +85,8 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">brand</label>
-                                        <input type="name" name="brand" class="form-control"  required>
-                                        @error('brand')
-                                            <span class="text-danger">Field ini tidak boleh kosong</span>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
                                         <label class="form-label">deskripsi</label>
-                                        <input type="text" name="desc" class="form-control"  required>
+                                        <textarea name="desc" class="form-control" id="" cols="30" rows="10" required></textarea>
                                         @error('desc')
                                             <span class="text-danger">Field ini tidak boleh kosong</span>
                                         @enderror
@@ -157,7 +150,6 @@
                     <td>Price</td>
                     <td>Category</td>
                     <td>image</td>
-                    <td>brand</td>
                     <td>desc</td>
                     <td colspan="2" width="100pxs">Action</td>
                 </tr>
@@ -172,7 +164,6 @@
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->category }}</td>
                     <td><img src="{{asset('public/image/'.$p->image)}}" style="max-height: 150px; max-width: 150px;" ></td>
-                    <td>{{ $p->brand}}</td>
                     <td>{{ $p->desc}}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
@@ -199,7 +190,7 @@
                                             <label class="form-label">Product</label>
                                             <input type="name" class="form-control" name="name" value="{{ $p->name }}" required>
                                             @error('name')
-                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
 
@@ -207,7 +198,7 @@
                                             <label class="form-label">Stock</label>
                                             <input type="number" class="form-control" name="stock" min="1" value="{{ $p->stock }}" required>
                                             @error('stock')
-                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
 
@@ -215,7 +206,7 @@
                                             <label class="form-label">Price</label>
                                             <input type="number" class="form-control" name="price" min="1" value="{{ $p->price }}" required>
                                             @error('price')
-                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
 
@@ -227,7 +218,7 @@
                                                 <option value="{{ $c->category_product }}" @if($p->category == $c->category_product)selected @endif>{{ $c->category_product }}</option>
                                                 @endforeach
                                             @error('category')
-                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                             </select>
                                         </div>
@@ -237,7 +228,15 @@
                                             <input type="file" name="image" accept="image/*" class="form-control" value="{{ asset('public/image/'.$p->image) }}" placeholder="Choose image" id="image" >
                                             <img src="" width="300px" alt="">
                                             @error('image')
-                                            <span class="text-danger">Field ini tidak boleh kosong</span>
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Description</label>
+                                            <textarea name="desc" class="form-control" id="" cols="30" rows="10" required></textarea>
+                                            @error('desc')
+                                                <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
                                         </div>
 
