@@ -60,10 +60,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Category</label>
-                                    <select type="name" class="form-control" name="category" required>
+                                    <select class="form-control" name="category"  required>
                                         <option selected disabled value=""><--- Pilih ---></option>
                                         @foreach($category as $key => $c)
-                                            <option value="{{ $c->category_product }}" @if($p->category == $c->category_product)selected @endif>{{ $c->category_product }}</option>
+                                            <option value="{{ $c->category_product }}">{{ $c->category_product }}</option>
                                         @endforeach
                                         @error('category')
                                             <span class="text-danger">Field ini tidak boleh kosong</span>
@@ -94,9 +94,9 @@
                     <td>name</td>
                     <td>qty</td>
                     <td>price</td>
+                    <td>total harga</td>
                     <td>category</td>
                     <td>date</td>
-                    <td>image</td>
                     <td>status</td>
                     <td colspan="2" width="100px">Action</td>
                 </tr>
@@ -109,9 +109,9 @@
                     <td>{{ $p->name }}</td>
                     <td>{{ $p->qty}}</td>
                     <td>{{ $p->price }}</td>
+                    <td>{{ $p->total }}</td>
                     <td>{{ $p->category }}</td>
                     <td>{{ $p->date }}</td>
-                    <td><img src="{{asset('public/image/'.$p->image)}}" style="max-height: 150px; max-width: 150px;" ></td>
                     <td>{{ $p->status }}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>

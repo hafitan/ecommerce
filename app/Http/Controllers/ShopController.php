@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
+use Carbon\Carbon;
 class ShopController extends Controller
 {
     /**
@@ -35,7 +37,36 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'qty' => 'required',
+            'price' => 'required',
+            'category' => 'required',
+            'total' => 'required',
+            'date' => 'required',
+            'status' => 'required'
+  
+        ]);
+        $barang = Product::find($request->product_id);
+        // dd($barang);
+        if($request->qty > $barang->stock){
+            return redirect()->back()->with('danger', 'qty tidak cukup');
+        }
+        
+        Order::create([
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => $request->price,
+            'category' => $request->category,
+            'total' => $request->qty * $barang->price,
+            'date' => Carbon::Today(),
+            'status' => $request->status
+
+            
+        ]);
+
+        return redirect()->route('admin.shop.index')
+    ->with('success','Berhasil Menyimpan !');
     }
 
     /**
@@ -89,5 +120,38 @@ class ShopController extends Controller
 
     return view('admin.shop.single' , compact('product' , 'play'));
 
+    }
+
+    public function chart(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'qty' => 'required',
+            'price' => 'required',
+            'category' => 'required',
+            'total' => 'required',
+            'date' => 'required',
+            'status' => 'required'
+  
+        ]);
+        $barang = Product::find($request->product_id);
+        // dd($barang);
+        if($request->qty > $barang->stock){
+            return redirect()->back()->with('danger', 'qty tidak cukup');
+        }
+        
+        Order::create([
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => $request->price,
+            'category' => $request->category,
+            'total' => $request->qty * $barang->price,
+            'date' => Carbon::Today(),
+            'status' => $request->status
+
+            
+        ]);
+
+        return redirect()->route('shop.index')
+    ->with('success','Berhasil Menyimpan !');
     }
 }

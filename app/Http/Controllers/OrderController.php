@@ -42,33 +42,26 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $request->validate([
-            'name' => 'required',
-            'qty' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-            'date' => 'required',
-            'status' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'qty' => 'required',
+        //     'price' => 'required',
+        //     'category' => 'required',
+        //     'date' => 'required',
+        //     'status' => 'required',
+        // ]);
         $barang = Product::find($request->product_id);
         // dd($barang);
         if($request->qty > $barang->stock){
             return redirect()->back()->with('danger', 'qty tidak cukup');
         }
 
-        //upload image
-        // $image = $request->file('image');
-        // dd($image->getClientOriginalName());
-        // $image->move('public/image', $image->getClientOriginalName());
-        // dd($barang);
-
-        // $cek = Order::where('name', $request->name)->first();
             Order::create([
-                // 'image'     => $image->getClientOriginalName(),
                 'name'     => $barang->name,
                 'qty'   => $request->qty,
-                'price'   => $request->qty * $barang->price,
-                'category_id'   => $request->category,
+                'price' => $barang->price,
+                'total' => $request->qty * $barang->price,
+                'category'   => $request->category,
                 'date' => Carbon::now(),
                 'status' => $request->status,
             ]);

@@ -36,6 +36,7 @@ Auth::routes();
 
 Route::post('restock' , 'ProductController@restock')->name('restock');
 Route::get('single/{id}' , 'ShopController@single')->name('single');
+Route::post('chart' , 'ShopController@chart')->name('chart');
 
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('order', OrderController::class);

@@ -15,6 +15,7 @@ class Order extends Model
         'qty',
         'category',
         'date',
+        'total',
         'status',
     ];
 }
