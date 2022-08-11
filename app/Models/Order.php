@@ -13,9 +13,8 @@ class Order extends Model
         'name',
         'price',
         'qty',
-        'category_id',
+        'category',
         'date',
-        'image',
         'status',
     ];
 }

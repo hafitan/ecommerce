@@ -71,13 +71,6 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">image</label>
-                                    <input type="file" class="form-control" name="image" placeholder="Choose image" id="image">
-                                    @error('image')
-                                        <span class="text-danger">Field ini tidak boleh kosong</span>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
                                     <label class="form-label">status</label>
                                     <select name="status" class="form-control" id="" required>
                                         <option value="">-- Pilih --</option>
@@ -94,7 +87,6 @@
                 </div>
             </div>
 
-            {{-- restock modal --}}
 
             <table class="table table-success table-striped">
                 <tr>

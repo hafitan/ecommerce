@@ -46,9 +46,8 @@ class OrderController extends Controller
             'name' => 'required',
             'qty' => 'required',
             'price' => 'required',
-            'category_id' => 'required',
+            'category' => 'required',
             'date' => 'required',
-            'image' => 'required',
             'status' => 'required',
         ]);
         $barang = Product::find($request->product_id);
@@ -58,14 +57,14 @@ class OrderController extends Controller
         }
 
         //upload image
-        $image = $request->file('image');
+        // $image = $request->file('image');
         // dd($image->getClientOriginalName());
-        $image->move('public/image', $image->getClientOriginalName());
+        // $image->move('public/image', $image->getClientOriginalName());
         // dd($barang);
 
         // $cek = Order::where('name', $request->name)->first();
             Order::create([
-                'image'     => $image->getClientOriginalName(),
+                // 'image'     => $image->getClientOriginalName(),
                 'name'     => $barang->name,
                 'qty'   => $request->qty,
                 'price'   => $request->qty * $barang->price,
