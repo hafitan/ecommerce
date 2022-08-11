@@ -45,38 +45,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $cek = Product::where('name' , $request->name)->where('category', $request->category)->first();
-        // switch($cek){
-        //     case false:
-        //         $request->validate([
-        //             'name' => 'required',
-        //             'stock' => 'required',
-        //             'price' => 'required',
-        //             'category' => 'required',
-        //         ]);
 
-
-        // Product::create($request->all());
-        // return redirect()->route('product.index')
-        // ->with('success' , 'Data berhasil ditambah');
-
-        // break;
-
-        // default:
-        // return redirect()->back()->with('danger' , 'Data sudah ada');
-
-        // }
-
+            // ddd($request->all());
             $this->validate($request, [
                 'name' => 'required',
                 'stock' => 'required',
                 'price' => 'required',
                 'category' => 'required',
-                'image' => 'required|image|mimes:png,jpg,jpeg',
-                'brand' => 'required',
+                'image' => 'required|image',
                 'desc' => 'required'
             ]);
+            // dd($this);
              //upload image
         $image = $request->file('image');
         // dd($image->getClientOriginalName());
@@ -90,14 +69,12 @@ class ProductController extends Controller
                 'stock'   => $request->stock,
                 'price'   => $request->price,
                 'category'   => $request->category,
-                'brand' => $request->brand,
                 'desc' => $request->desc
             ]);
         }else{
             $cek->stock += $request->stock;
             $cek->price = $request->price;
             $cek->image = $request->image;
-            $cek->brand = $request->brand;
             $cek->desc = $request->desc;
             $cek->save();
         }
@@ -143,7 +120,6 @@ class ProductController extends Controller
             'price' => 'required',
             'category' => 'required',
             'image'     => 'required|image|mimes:png,jpg,jpeg',
-            'brand' => 'required',
             'desc' => 'required'
         ]);
 
@@ -158,7 +134,6 @@ class ProductController extends Controller
             'stock' => $request->stock,
             'price' => $request->price,
             'category' => $request->category,
-            'brand' => $request->brand,
             'desc' => $request->desc
         ]);
         if($upload){

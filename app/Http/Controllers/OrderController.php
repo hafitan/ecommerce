@@ -42,15 +42,15 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        // $request->validate([
-        //     'name' => 'required',
-        //     'qty' => 'required',
-        //     'price' => 'required',
-        //     'category' => 'required',
-        //     'date' => 'required',
-        //     'image' => 'required',
-        //     'status' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'qty' => 'required',
+            'price' => 'required',
+            'category_id' => 'required',
+            'date' => 'required',
+            'image' => 'required',
+            'status' => 'required',
+        ]);
         $barang = Product::find($request->product_id);
         // dd($barang);
         if($request->qty > $barang->stock){
@@ -69,7 +69,7 @@ class OrderController extends Controller
                 'name'     => $barang->name,
                 'qty'   => $request->qty,
                 'price'   => $request->qty * $barang->price,
-                'category'   => $request->category,
+                'category_id'   => $request->category,
                 'date' => Carbon::now(),
                 'status' => $request->status,
             ]);

@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
-                                        <select type="name" class="form-control" name="category" required>
+                                        <select class="form-control" name="category" required>
                                             <option selected disabled value=""><--- Pilih ---></option>
                                             @foreach($category as $key => $c)
                                                 <option value="{{ $c->category_product}}">{{ $c->category_product }}</option>
@@ -214,8 +214,8 @@
                                             <label class="form-label">Category</label>
                                             <select type="" class="form-control" name="category" required>
                                                 <option value="">-- Pilih --</option>
-                                                @foreach($category as $key => $c)
-                                                <option value="{{ $c->category_product }}" @if($p->category == $c->category_product)selected @endif>{{ $c->category_product }}</option>
+                                                @foreach($category as $key => $c)_product
+                                                <option value="{{ $c->cetrgory_product }}" @if($p->cetrgory_product == $c->cetrgory_product)selected @endif>{{ $c->cetrgory_product }}</option>
                                                 @endforeach
                                             @error('category')
                                                 <span class="text-danger">Field ini tidak boleh kosong</span>

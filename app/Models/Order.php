@@ -13,7 +13,7 @@ class Order extends Model
         'name',
         'price',
         'qty',
-        'category',
+        'category_id',
         'date',
         'image',
         'status',
