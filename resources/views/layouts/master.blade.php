@@ -77,7 +77,7 @@
           <span>List Product</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('chart') }}">
+        <a class="nav-link" href="{{ url('charts') }}">
           <i class="bi bi-basket"></i>
           <span>Chart</span></a>
       </li>

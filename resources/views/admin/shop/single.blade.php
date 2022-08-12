@@ -18,16 +18,18 @@
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
-<!--
-
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("#first").keyup(function(){
+            $("#result").val($("#first").val());
+          });
+        });
+    </script>
 </head>
 
 <body>
@@ -110,15 +112,28 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Open Content -->
     <section class="bg-light">
+        <div class="container-fluid">
+            @if ($message = Session::get('success'))
+            <br><br>
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+            @endif
+
+            @if ($message = Session::get('danger'))
+        <br><br>
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
         <div class="container pb-5">
-            @foreach($play as $key => $p)
             <div class="row">
 
                 <div class="col-lg-5 mt-5">
 
                     <div class="card mb-3">
 
-                        <img class="card-img img-fluid" src="{{asset('public/image/'.$p->image)}}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{asset('public/image/'.$product->image)}}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
 
@@ -128,36 +143,36 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">{{ $p->name}}</h1>
-                            <p class="h3 py-2">${{ $p->price }}</p>
+                            <h1 class="h2">{{ $product->name}}</h1>
+                            <p class="h3 py-2">${{ $product->price }}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Stock :   {{ $p->stock }}</h6>
+                                    <h6>Stock :   {{ $product->stock }}</h6> 
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>{{ $p->brand }}</strong></p>
+                                    <p class="text-muted"><strong>{{ $product->brand }}</strong></p>
                                 </li>
                             </ul>
 
                             <h6>Description:</h6>
-                            <p>{{ $p->desc }}</p>
+                            <p>{{ $product->desc }}</p>
 
 
 
                             <form action="/chart" method="post">
                                 @csrf
                                 <div class="row">
-
+                                  
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                Quantity :
+                                                Quantity :           
                                                 <div class="mb-3">
-                                                    <input type="hidden" name="category" value="{{ $p->category }}">
-                                                    <input type="hidden" name="name" value="{{ $p->name }}">
-                                                    <input type="hidden" name="price" value="{{ $p->price }}" id="">
+                                                    <input type="hidden" name="category" value="{{ $product->category }}">
+                                                    <input type="hidden" name="name" value="{{ $product->name }}">
+                                                    <input type="hidden" name="price" value="{{ $product->price }}" id="">
                                                     <input type="hidden" name="status" value="Belum dibayar">
-                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" value="1" max="{{ $p->stock }}"  required>
+                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" s id="first" required>
                                                     @error('qty')
                                                         <span class="text-danger">Field ini tidak boleh kosong</span>
                                                     @enderror
@@ -165,19 +180,24 @@ https://templatemo.com/tm-559-zay-shop
                                             </li>
                                         </ul>
                                     </div>
-                                    @endforeach
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                                     </div>
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
-                                    </div>
                                 </div>
                             </form>
-
-
+                            <form action="/keranjang" method="POST">
+                                @csrf
+                                <input type="hidden" name="category" value="{{ $product->category }}">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}" id="">
+                                <input type="hidden" name="status" value="Belum dibayar">
+                                <input type="hidden" name="qty" id="result">
+                                <div class="col d-grid">
+                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

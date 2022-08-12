@@ -37,12 +37,14 @@ Auth::routes();
 Route::post('restock' , 'ProductController@restock')->name('restock');
 Route::get('single/{id}' , 'ShopController@single')->name('single');
 Route::post('chart' , 'ShopController@chart')->name('chart');
+Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
 
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('order', OrderController::class);
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('user', UserController::class);
+    Route::resource('charts' , ChartsController::class);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

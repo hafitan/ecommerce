@@ -94,9 +94,22 @@ https://templatemo.com/tm-559-zay-shop
 
 
     <!-- Start Content -->
-    <div class="container py-5">
-        <div class="row">
+    <div class="container-fluid">
+        @if ($message = Session::get('success'))
+        <br><br>
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
+    </div>
+        @endif
 
+        @if ($message = Session::get('danger'))
+    <br><br>
+    <div class="alert alert-danger">
+        <p>{{ $message }}</p>
+    </div>
+    @endif
+    <div class="container py-5">    
+        <div class="row">
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Categories</h1>
                 <ul class="list-unstyled templatemo-accordion">

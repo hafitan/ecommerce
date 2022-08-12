@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Chart;
 use Carbon\Carbon;
 class ShopController extends Controller
 {
@@ -116,6 +117,7 @@ class ShopController extends Controller
     public function single($id)
     {
     $product = Product::find($id);
+    // dd($product);
     $play = Product::all();
 
     return view('admin.shop.single' , compact('product' , 'play'));
@@ -148,5 +150,20 @@ class ShopController extends Controller
 
         return redirect()->route('shop.index')
     ->with('success','Berhasil Menyimpan !');
+    }
+
+    public function keranjang(Request $request){
+        
+        Chart::create([
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => $request->price,
+            'category' => $request->category,
+            'total' => $request->qty * $request->price,
+            'date' => Carbon::Today(),
+            'status' => $request->status
+        ]);
+        return redirect()->route('shop.index')
+    ->with('success','Berhasil Menambahkan Ke Cart !');
     }
 }
