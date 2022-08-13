@@ -38,6 +38,8 @@ Route::post('restock' , 'ProductController@restock')->name('restock');
 Route::get('single/{id}' , 'ShopController@single')->name('single');
 Route::post('chart' , 'ShopController@chart')->name('chart');
 Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
+Route::get('checkout' , 'ShopController@checkout')->name('checkout');
+Route::post('bcheckout' , 'ShopController@bcheckout')->name('bcheckout');
 
 Route::group(['middleware' => 'auth','admin'], function(){
     Route::resource('order', OrderController::class);

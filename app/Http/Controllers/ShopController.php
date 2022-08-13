@@ -158,6 +158,7 @@ class ShopController extends Controller
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
+            'image' => $request->image,
             'category' => $request->category,
             'total' => $request->qty * $request->price,
             'date' => Carbon::Today(),
@@ -165,5 +166,28 @@ class ShopController extends Controller
         ]);
         return redirect()->route('shop.index')
     ->with('success','Berhasil Menambahkan Ke Cart !');
+    }
+
+    public function bCheckout( Request $request){
+        
+
+        $product = Chart::find('id');
+
+       $chart = Chart::create([
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => $request->price,
+            'category' => $request->category,
+            'total' => $request->qty * $request->price,
+            'date' => Carbon::Today(),
+            'status' => $request->status
+       ]);
+        return view('admin.shop.checkout' , compact('product'));
+    }   
+
+    public function checkout($id){
+        $product = Chart::find($id);
+        $product = Product::all();
+        return view('admin.shop.checkout' , compact('product'));
     }
 }
