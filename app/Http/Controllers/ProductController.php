@@ -49,7 +49,7 @@ class ProductController extends Controller
 
             // ddd($request->all());
             $this->validate($request, [
-                'name' => 'required',
+                'name' => 'required|unique:product,name,id',
                 'stock' => 'required',
                 'price' => 'required',
                 'category' => 'required',
