@@ -34,17 +34,20 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Auth::routes();
 
-Route::post('restock' , 'ProductController@restock')->name('restock');
-Route::get('single/{id}' , 'ShopController@single')->name('single');
-Route::post('chart' , 'ShopController@chart')->name('chart');
-Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
 
-Route::group(['middleware' => 'auth','admin'], function(){
+Route::get('single/{id}' , 'ShopController@single')->name('single');
+
+Route::group(['middleware' => 'auth','1'], function(){
     Route::resource('order', OrderController::class);
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('user', UserController::class);
     Route::resource('charts' , ChartsController::class);
+    Route::post('restock' , 'ProductController@restock')->name('restock');
+});
+Route::group(['middleware' => 'auth', 0], function(){
+    Route::post('chart' , 'ShopController@chart')->name('chart');
+    Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

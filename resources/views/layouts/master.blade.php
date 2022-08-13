@@ -56,8 +56,8 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
 
-      @if( auth()->user()->role == '1')    
-       
+      @if( auth()->user()->role == '1')
+
       <li class="nav-item active">
         @endif
       @if( auth()->user()->role == '1')
@@ -79,7 +79,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('charts') }}">
           <i class="bi bi-basket"></i>
-          <span>Chart</span></a>
+          <span>Cart</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('user') }}">

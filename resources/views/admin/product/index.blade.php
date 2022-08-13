@@ -116,7 +116,7 @@
                                                 <select name="id" id="" class="form-control" required>
                                                     <option value="">-- Pilih --</option>
                                                     @foreach ($product as $p)
-                                                        <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                                        <option value="{{ $p->id }}">{{ $p->name }} --{{ $p->price }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('id')
@@ -214,8 +214,8 @@
                                             <label class="form-label">Category</label>
                                             <select type="" class="form-control" name="category" required>
                                                 <option value="">-- Pilih --</option>
-                                                @foreach($category as $key => $c)_product
-                                                <option value="{{ $c->cetrgory_product }}" @if($p->cetrgory_product == $c->cetrgory_product)selected @endif>{{ $c->cetrgory_product }}</option>
+                                                @foreach($category as $key => $c)
+                                                <option value="{{ $c->category_product }}" @if($p->category == $c->category_product)selected @endif>{{ $c->category_product }}</option>
                                                 @endforeach
                                             @error('category')
                                                 <span class="text-danger">Field ini tidak boleh kosong</span>
@@ -234,7 +234,7 @@
 
                                         <div class="mb-3">
                                             <label for="" class="form-label">Description</label>
-                                            <textarea name="desc" class="form-control" id="" cols="30" rows="10" required></textarea>
+                                            <textarea name="desc" class="form-control" value="" id="" cols="30" rows="10" required>{{ $p->desc }}</textarea>
                                             @error('desc')
                                                 <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror

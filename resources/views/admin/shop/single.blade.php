@@ -147,7 +147,7 @@
                             <p class="h3 py-2">${{ $product->price }}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Stock :   {{ $product->stock }}</h6> 
+                                    <h6>Stock :   {{ $product->stock }}</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class="text-muted"><strong>{{ $product->brand }}</strong></p>
@@ -162,17 +162,17 @@
                             <form action="/chart" method="post">
                                 @csrf
                                 <div class="row">
-                                  
+
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                Quantity :           
+                                                Quantity :
                                                 <div class="mb-3">
                                                     <input type="hidden" name="category" value="{{ $product->category }}">
                                                     <input type="hidden" name="name" value="{{ $product->name }}">
                                                     <input type="hidden" name="price" value="{{ $product->price }}" id="">
                                                     <input type="hidden" name="status" value="Belum dibayar">
-                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" s id="first" required>
+                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" max="{{ $product->stock }}" s id="first" required>
                                                     @error('qty')
                                                         <span class="text-danger">Field ini tidak boleh kosong</span>
                                                     @enderror

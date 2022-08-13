@@ -16,6 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
+        // dd($product);
         $category = Category::all();
         return view('admin.product.index' , compact('product' , 'category'));
     }
@@ -61,7 +62,11 @@ class ProductController extends Controller
         // dd($image->getClientOriginalName());
         $image->move('public/image', $image->getClientOriginalName());
 
-        $cek = Product::where('name', $request->name)->first();
+        $coba = [
+            'name' => $request->name,
+            'price' => $request->price,
+        ];
+        $cek = Product::where($coba)->first();
         if($cek == NULL){
             Product::create([
                 'image'     => $image->getClientOriginalName(),
@@ -119,23 +124,26 @@ class ProductController extends Controller
             'stock' => 'required',
             'price' => 'required',
             'category' => 'required',
-            'image'     => 'required|image|mimes:png,jpg,jpeg',
+            'image'     => 'image|mimes:png,jpg,jpeg',
             'desc' => 'required'
         ]);
 
-        //upload image
-        $image = $request->file('image');
-        // dd($image->getClientOriginalName());
-        $image->move('public/image', $image->getClientOriginalName());
-
-        $upload = $product->update([
-            'image' => $image->getClientOriginalName(),
+        $data = [
             'name' => $request->name,
             'stock' => $request->stock,
             'price' => $request->price,
             'category' => $request->category,
             'desc' => $request->desc
-        ]);
+        ];
+        //upload image
+        if ($request->image) {
+            $image = $request->file('image');
+            // dd($image->getClientOriginalName());
+            $image->move('public/image', $image->getClientOriginalName());
+            $data['image'] = $image->getClientOriginalName();
+        }
+
+        $upload = $product->update($data);
         if($upload){
             //redirect dengan pesan sukses
             return redirect()->route('product.index')->with(['success' => 'Data Berhasil Diubah!']);

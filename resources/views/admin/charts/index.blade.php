@@ -5,7 +5,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">Category</h1>
+            <h1 class="mt-4">Cart</h1>
             @if ($message = Session::get('success'))
             <br><br>
         <div class="alert alert-success">
