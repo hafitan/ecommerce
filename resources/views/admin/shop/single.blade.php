@@ -144,7 +144,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">{{ $product->name}}</h1>
-                            <p class="h3 py-2">${{ $product->price }}</p>
+                            <p class="h3 py-2">Rp.{{ $product->price }}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Stock :   {{ $product->stock }}</h6>
@@ -181,8 +181,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                        @if (Route::has('login'))
-                            @auth
+                                {{-- @if (Route::has('login'))
+                                    @auth --}}
                                 <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
@@ -191,6 +191,7 @@
                             </form>
                             <form action="/keranjang" method="POST">
                                 @csrf
+
                                 <input type="hidden" name="category" value="{{ $product->category }}">
                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                 <input type="hidden" name="price" value="{{ $product->price }}" id="">
@@ -199,19 +200,19 @@
                                 <div class="col d-grid">
                                     <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
                                 </div>
-                                @else
-                                <div class="row pb-3">
+                                {{-- @else --}}
+                                {{-- <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Login</button>
                                     </div>
                                 </div>
-                                @if (Route::has('register')) 
+                                @if (Route::has('register'))
                                 <div class="col d-grid">
                                     <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Register</button>
                                 </div>
-                                @endif
-                            @endauth
-                        @endif
+                                @endif --}}
+                                    {{-- @endauth
+                                @endif --}}
                             </form>
                         </div>
                     </div>

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 <!--
-    
+
 TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
@@ -108,7 +108,7 @@ https://templatemo.com/tm-559-zay-shop
         <p>{{ $message }}</p>
     </div>
     @endif
-    <div class="container py-5">    
+    <div class="container py-5">
         <div class="row">
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Categories</h1>
@@ -177,7 +177,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-md-4">
                         <div class="card mb-4 test-wap rounded-0">
                             <div class="card rounded-0">
-                               
+
                                 <img class="card-img rounded-0 img-fluid" style="height: 300px ; width: 260px;" src="{{asset('public/image/'.$p->image)}}">
                                 <div class="card-img-overlay rounded-0 test-overlay d-flex align-items-center justify-content-center">
                                 </div>
@@ -202,7 +202,7 @@ https://templatemo.com/tm-559-zay-shop
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">${{ $p->price }}</p>
+                                <p class="text-center mb-0">Rp.{{ $p->price }}</p>
                             </div>
                         </div>
                     </div>
@@ -275,7 +275,7 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
     </div>
-     
+
     <!-- End Content -->
 
 
