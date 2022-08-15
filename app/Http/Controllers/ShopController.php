@@ -168,12 +168,11 @@ class ShopController extends Controller
     ->with('success','Berhasil Menambahkan Ke Cart !');
     }
 
-    public function bCheckout( Request $request){
+    public function bCheckout(Request $request){
         
+        $product = chart::all()->last();
 
-        $product = Chart::find('id');
-
-       $chart = Chart::create([
+         Chart::create([
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
@@ -185,9 +184,8 @@ class ShopController extends Controller
         return view('admin.shop.checkout' , compact('product'));
     }   
 
-    public function checkout($id){
-        $product = Chart::find($id);
-        $product = Product::all();
+    public function checkout(){
+        $product = Chart::all()->last();
         return view('admin.shop.checkout' , compact('product'));
     }
 }
