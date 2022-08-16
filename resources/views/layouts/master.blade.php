@@ -182,6 +182,7 @@
       </div>
     </div>
   </div>
+  @stack('scripts')
 
   <!-- Bootstrap core JavaScript-->
   <script src="assets/admin/vendor/jquery/jquery.min.js"></script>

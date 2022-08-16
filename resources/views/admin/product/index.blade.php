@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">deskripsi</label>
-                                        <textarea name="desc" class="form-control" id="" cols="30" rows="10" required></textarea>
+                                        <textarea name="desc" class="my-editor form-control" id="my-editor" cols="30" rows="10" required></textarea>
                                         @error('desc')
                                             <span class="text-danger">Field ini tidak boleh kosong</span>
                                         @enderror
@@ -234,7 +234,7 @@
 
                                         <div class="mb-3">
                                             <label for="" class="form-label">Description</label>
-                                            <textarea name="desc" class="form-control" value="" id="" cols="30" rows="10" required>{{ $p->desc }}</textarea>
+                                            <textarea name="desc" class="my-editor form-control" id="my-editor1" cols="30" rows="10" required>{{ $p->desc }}</textarea>
                                             @error('desc')
                                                 <span class="text-danger">Field ini tidak boleh kosong</span>
                                             @enderror
@@ -258,3 +258,11 @@
 </div>
 
 @endsection
+
+@push('scripts')
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('my-editor');
+        CKEDITOR.replace('my-editor1');
+    </script>
+@endpush
