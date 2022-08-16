@@ -170,9 +170,9 @@ class ShopController extends Controller
 
     public function bCheckout(Request $request){
         
-        $product = chart::all()->last();
+        // $product = chart::all()->last();
 
-         Chart::create([
+        $result = Chart::create([
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
@@ -181,11 +181,13 @@ class ShopController extends Controller
             'date' => Carbon::Today(),
             'status' => $request->status
        ]);
-        return view('admin.shop.checkout' , compact('product'));
+
+       return redirect()->route('checkout', $result->id);
+        // return view('admin.shop.checkout' , compact('product'));
     }   
 
-    public function checkout(){
-        $product = Chart::all()->last();
+    public function checkout($id){
+        $product = Chart::find($id);
         return view('admin.shop.checkout' , compact('product'));
     }
 }
