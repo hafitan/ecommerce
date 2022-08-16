@@ -22,7 +22,7 @@ class CreateOrderTable extends Migration
             $table->integer('price');
             $table->integer('total');
             $table->string('shipping')->nullable();
-            $table->string('payment');
+            $table->string('payment')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

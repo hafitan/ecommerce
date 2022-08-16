@@ -46,10 +46,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+// |unique:product,name,id
             // ddd($request->all());
             $this->validate($request, [
-                'name' => 'required|unique:product,name,id',
+                'name' => 'required',
                 'stock' => 'required',
                 'price' => 'required',
                 'category' => 'required',
