@@ -48,8 +48,8 @@ Route::group(['middleware' => 'auth','1'], function(){
 Route::group(['middleware' => 'auth', 0], function(){
     Route::post('chart' , 'ShopController@chart')->name('chart');
     Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
-    Route::post('bcheckout' , 'ShopController@bcheckout')->name('bcheckout');
-    Route::get('checkout' , 'ShopController@checkout')->name('checkout');
+    Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
+    //Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

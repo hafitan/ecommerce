@@ -159,7 +159,7 @@
 
 
 
-                            <form action="/bcheckout" method="post">
+                            <form action="{{ url('checkout') }}" method="POST">
                                 @csrf
                                 <div class="row">
 

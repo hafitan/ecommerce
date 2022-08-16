@@ -9,6 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+
   <title>E-Commerce</title>
 
   <!-- Custom fonts for this template-->
@@ -19,7 +20,8 @@
 
   <!-- Custom styles for this template-->
   <link href="../../assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
-
+  
+  
 </head>
 
 <body id="page-top">
