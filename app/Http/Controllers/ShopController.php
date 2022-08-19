@@ -153,7 +153,7 @@ class ShopController extends Controller
     }
 
     public function keranjang(Request $request){
-        
+
         Chart::create([
             'name' => $request->name,
             'qty' => $request->qty,
@@ -169,10 +169,14 @@ class ShopController extends Controller
     }
 
     public function bCheckout(Request $request){
-        
+
         // $product = chart::all()->last();
+        $image = $request->file('image');
+        // dd($image->getClientOriginalName());
+        $image->move('public/image', $image->getClientOriginalName());
 
         $result = Chart::create([
+            'image' => $image->getClientOriginalName(),
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
@@ -184,7 +188,7 @@ class ShopController extends Controller
 
        return redirect()->route('checkout', $result->id);
         // return view('admin.shop.checkout' , compact('product'));
-    }   
+    }
 
     public function checkout($id){
         $product = Chart::find($id);
