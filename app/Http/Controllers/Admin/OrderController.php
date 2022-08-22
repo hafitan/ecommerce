@@ -68,7 +68,7 @@ class OrderController extends Controller
             $barang->stock -= $request->qty;
             $barang->save();
 
-            return redirect()->route('order.index')->with('success', 'pembelian berhasil');
+            return redirect()->route('admin.order.index')->with('success', 'pembelian berhasil');
     }
 
     /**

@@ -70,7 +70,7 @@
                     <td>{{ $p->category_product }}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
-                        <form  action="{{ route('category.destroy', $p->id) }}" method="POST">
+                        <form  action="{{ route('admin.category.destroy', $p->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
 
@@ -84,7 +84,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('category.update', $p->id) }}" method="POST" enctype="multipart/form-data">
+                                        <form action="{{ route('admin.category.update', $p->id) }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="mb-3">

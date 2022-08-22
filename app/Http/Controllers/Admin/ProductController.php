@@ -85,7 +85,7 @@ class ProductController extends Controller
             $cek->desc = $request->desc;
             $cek->save();
         }
-            return redirect()->route('product.index')->with('success', 'Berhasil menambahkan');
+            return redirect()->route('admin.product.index')->with('success', 'Berhasil menambahkan');
 
     }
 
@@ -148,12 +148,12 @@ class ProductController extends Controller
         $upload = $product->update($data);
         if($upload){
             //redirect dengan pesan sukses
-            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Diubah!']);
+            return redirect()->route('admin.product.index')->with(['success' => 'Data Berhasil Diubah!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('product.index')->with(['error' => 'Data Gagal Diubah!']);
+            return redirect()->route('admin.product.index')->with(['error' => 'Data Gagal Diubah!']);
         }
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -165,7 +165,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product.index')
+        return redirect()->route('admin.product.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
 
@@ -174,7 +174,7 @@ class ProductController extends Controller
         $barang = Product::find($request->id);
         $barang->stock += $request->stock;
         $barang->save();
-        return redirect()->route('product.index')->with('success', 'berhasil manembah stock');
+        return redirect()->route('admin.product.index')->with('success', 'berhasil manembah stock');
     }
 
 }

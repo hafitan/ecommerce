@@ -28,9 +28,9 @@
                 <i class="bi bi-plus-circle">Tambah</i>
             </button>
             {{-- button restock --}}
-            <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleRestock">
+            {{-- <button type="button" class="btn btn-primary mb-3" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#exampleRestock">
                 <i class="bi bi-plus-circle">restock</i>
-            </button>
+            </button> --}}
 
             <div>
                 {{-- add modal --}}

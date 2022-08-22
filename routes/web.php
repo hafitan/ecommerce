@@ -18,7 +18,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-// Route::get('product' , [App\Http\Controllers\Asmin\ProductController::class, 'index']);
+Route::get('product' , [App\Http\Controllers\Asmin\ProductController::class, 'index']);
 
 
 Route::get('/', function () {

@@ -41,7 +41,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($request->all());
-        return redirect()->route('category.index')
+        return redirect()->route('admin.category.index')
         ->with('success' , 'Data berhasil ditambah');
     }
 
@@ -95,7 +95,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.index')
+        return redirect()->route('admin.category.index')
             ->with('success' , 'Data berhasil dihapus!!');
     }
 }

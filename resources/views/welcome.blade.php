@@ -3,11 +3,11 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Custom CSS -->
      <link rel="stylesheet" href="{{url('landing/css/style.css')}}">
@@ -57,13 +57,13 @@
             <div class="col-12 col-lg-4">
                 <h2><i>Adera</i> </h2>
                 <p>Aplikasi Platform Jual Beli Produk Di Website Secara Online.</p>
-                <a href="{{url('shop')}}">Yuk Mulai</a>
+                <a href="{{route('admin.shop.index')}}">Yuk Mulai</a>
             </div>
             <div class="col-12 col-lg-8">
                 <img src="{{url('landing/assets/images/mainbenner.png')}}" alt="Team process banner">
             </div>
         </div>
-    </div> 
+    </div>
 
     <!-- Optional JavaScript -->
 
@@ -78,11 +78,11 @@
     </script>
 </body>
 
-</html> 
+</html>
 
 
 
-{{--  
+{{--
 
 @section('content')
 
@@ -144,7 +144,7 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
@@ -156,7 +156,7 @@
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
-                                    @endif 
+                                    @endif
                                 </div>
                             </div>
                         </form>
@@ -165,6 +165,6 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 @endsection  --}}
