@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Chart;
+use App\Models\Shipping;
+use App\Models\Payment;
 use Carbon\Carbon;
 class ShopController extends Controller
 {
@@ -170,13 +172,10 @@ class ShopController extends Controller
 
     public function bCheckout(Request $request){
 
-        // $product = chart::all()->last();
-        $image = $request->file('image');
-        // dd($image->getClientOriginalName());
-        $image->move('public/image', $image->getClientOriginalName());
+        $shipping = Shipping::all();
+        $payment = Payment::all();
 
         $result = Chart::create([
-            'image' => $image->getClientOriginalName(),
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
