@@ -130,13 +130,11 @@
             <div class="row">
 
                 <div class="col-lg-5 mt-5">
-
+{{-- @dd($product); --}}
                     <div class="card mb-3">
-
-                        <img class="card-img img-fluid" src="" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{asset('public/image/'.$product->image)}}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
-
                     </div>
                 </div>
                 <!-- col end -->
@@ -149,12 +147,12 @@
                             <p class="h6 py-2">Harga : {{ $product->price }}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Kuantitas : <strong>{{ $product->qty }}</strong></h6> 
+                                    <h6>Kuantitas : <strong>{{ $product->qty }}</strong></h6>
                                 </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Total harga : <strong>Rp.{{ $product->total }}</strong></h6> 
+                                    <h6>Total harga : <strong>Rp.{{ $product->total }}</strong></h6>
                                 </li>
                             </ul>
                             <ul class="list-inline">

@@ -155,11 +155,11 @@
                             </ul>
 
                             <h6>Description:</h6>
-                            <p>{{ $product->desc }}</p>
+                            <p>{!! $product->desc !!} </p>
 
 
 
-                            <form action="{{ route('bcheckout') }}" method="POST">
+                            <form action="{{ route('bcheckout') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
 
@@ -168,6 +168,8 @@
                                             <li class="list-inline-item text-right">
                                                 Quantity :
                                                 <div class="mb-3">
+                                                    {{-- <img src="{{asset('public/image/'.$product->image)}}" alt="" hidden name="image"> --}}
+                                                    {{-- <input type="file" name="image" value="{{asset('public/image/'.$product->image)}}" > --}}
                                                     <input type="hidden" name="category" value="{{ $product->category }}">
                                                     <input type="hidden" name="name" value="{{ $product->name }}">
                                                     <input type="hidden" name="price" value="{{ $product->price }}" id="">

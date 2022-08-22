@@ -164,7 +164,7 @@
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->category }}</td>
                     <td><img src="{{asset('public/image/'.$p->image)}}" style="max-height: 150px; max-width: 150px;" ></td>
-                    <td>{{ $p->desc}}</td>
+                    <td>{!! $p->desc!!}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
                         <form  action="{{ route('product.destroy', $p->id) }}" method="POST">

@@ -11,5 +11,10 @@ class Chart extends Model
 
     protected $table = 'chart';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'category', 'qty','date','price','total', 'status'];
+    protected $fillable = ['name', 'id_product', 'category', 'qty','date','price','total', 'status', 'image'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

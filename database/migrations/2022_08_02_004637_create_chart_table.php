@@ -22,6 +22,7 @@ class CreateChartTable extends Migration
             $table->integer('price');
             $table->integer('total');
             $table->string('status')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
