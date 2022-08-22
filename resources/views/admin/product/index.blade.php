@@ -41,7 +41,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
@@ -101,7 +101,7 @@
                 </div>
 
                 {{-- restock modal --}}
-                    <div class="modal fade" id="exampleRestock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {{-- <div class="modal fade" id="exampleRestock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -137,7 +137,7 @@
                                     </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 {{-- end restcok --}}
 
             </div>
@@ -167,7 +167,7 @@
                     <td>{!! $p->desc!!}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
-                        <form  action="{{ route('product.destroy', $p->id) }}" method="POST">
+                        <form  action="{{ route('admin.product.destroy', $p->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
 
@@ -182,7 +182,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('product.update', $p->id) }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('admin.product.update', $p->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
 

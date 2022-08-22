@@ -20,8 +20,8 @@
 
   <!-- Custom styles for this template-->
   <link href="../../assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
-  
-  
+
+
 </head>
 
 <body id="page-top">
@@ -64,27 +64,27 @@
         @endif
       @if( auth()->user()->role == '1')
         <li class="nav-item active">
-        <a class="nav-link" href="{{ url('category') }}">
+        <a class="nav-link" href="{{ route('admin.category.index') }}">
           <i class="fa fa-archive" aria-hidden="true"></i>
           <span>Category</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('order') }}">
+        <a class="nav-link" href="{{ route('admin.order.index') }}">
           <i class="bi bi-bag-check"></i>
           <span>List Order</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('product') }}">
+        <a class="nav-link" href="{{ route('admin.product.index') }}">
           <i class="bi bi-stack"></i>
           <span>List Product</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('charts') }}">
+        <a class="nav-link" href="{{ route('admin.charts.index') }}">
           <i class="bi bi-basket"></i>
           <span>Cart</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('user') }}">
+        <a class="nav-link" href="{{ route('admin.user.index') }}">
           <i class="bi bi-person"></i>
           <span>User</span></a>
       </li>

@@ -35,7 +35,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="POST" action="{{ route('category.store') }}">
+                    <form method="POST" action="{{ route('admin.category.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
@@ -82,7 +82,7 @@
                     <td>{{ $p->status }}</td>
                     <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$p->id}}">Ubah</a></td>
                     <td>
-                        <form  action="{{ route('charts.destroy', $p->id) }}" method="POST">
+                        <form  action="{{ route('admin.charts.destroy', $p->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
 
@@ -96,7 +96,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('charts.update', $p->id) }}" method="POST" enctype="multipart/form-data">
+                                        <form action="{{ route('admin.charts.update', $p->id) }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="mb-3">
