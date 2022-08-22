@@ -32,7 +32,10 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
 Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 3b02b4a0773895934d8e7e9dad9892a91f1250db
 
     Route::group(['middleware' => 'auth','1'], function(){
         Route::resource('order', Admin\OrderController::class);
@@ -42,6 +45,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
         Route::resource('charts' , ChartsController::class);
         Route::post('restock' , 'Admin\ProductController@restock')->name('restock');
     });
+<<<<<<< HEAD
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // route admin dashboard
     Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
@@ -58,3 +62,22 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
     Route::get('single/{id}' , 'ShopController@single')->name('single');
     Route::resource('shop' , ShopController::class);
  
+=======
+
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // route admin dashboard
+    Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
+
+});
+Route::group(['middleware' => 'auth', 0], function(){
+    Route::post('chart' , 'ShopController@chart')->name('chart');
+    Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
+    Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
+    Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
+});
+
+Route::get('single/{id}' , 'ShopController@single')->name('single');
+Route::resource('shop' , ShopController::class);
+
+>>>>>>> 3b02b4a0773895934d8e7e9dad9892a91f1250db
