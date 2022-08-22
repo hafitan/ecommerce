@@ -28,17 +28,18 @@
                         <div class="row">
                         @foreach ($product as $p)
                                 <div class="col-4 mb-3">
-                                    <div class="card" style="width:200px; height : 320px;">
+                                    <div class="card" style="width:200px; height : 350px;">
                                         <img class="card-img img-fluid" style="height: 200px ; width: 290px;"
                                             src="{{ asset('public/image/' . $p->image) }}" alt="Card image cap"
                                             id="product-detail">
                                         {{-- <div class="card-body"> --}}
+                                        <br>
                                         <h5 class="card-title">{{ $p->name }}</h5>
                                         {{-- <p class="card-text">{!! $p->desc !!}</p> --}}
                                         <p>stock : {!! $p->stock !!}</p>
                                         <form action="{{ route('admin.order.store') }}" method="post"></form>
                                         <a href="{{ route('admin.order.store') }}"
-                                            style="width: 100px; position:absolute; right:40px; top:260px;"
+                                            style="width: 100px; position:absolute; right:46px; top:300px;"
                                             class="btn btn-primary"> beli</a>
                                         {{-- </div> --}}
                                     </div>
@@ -48,7 +49,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 border border-dark" style="background-color: white; border-radius : 5%;" border-color:black;>
-                    <h1>halaman daftar beli</h1>
+                    <br>
+                    <h6 class="text-center">halaman daftar beli</h6>
                 </div>
             </div>
         </main>
