@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // route admin dashboard
-    Route::get('adminHome', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+    Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
 
     Route::resource('shop' , ShopController::class);
 });

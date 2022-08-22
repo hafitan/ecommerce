@@ -43,7 +43,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('adminHome') }}">
+        <a class="nav-link" href="{{ url('home') }}">
           <i class="fas fa-fw fa-bell"></i>
           <span>Dashboard</span></a>
       </li>
