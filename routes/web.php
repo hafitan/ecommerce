@@ -42,16 +42,18 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
         Route::resource('charts' , ChartsController::class);
         Route::post('restock' , 'Admin\ProductController@restock')->name('restock');
     });
-    Route::group(['middleware' => 'auth', 0], function(){
-        Route::post('chart' , 'ShopController@chart')->name('chart');
-        Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
-        Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
-        Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
-    });
+
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // route admin dashboard
     Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
 
-    Route::resource('shop' , ShopController::class);
 });
+Route::group(['middleware' => 'auth', 0], function(){
+    Route::post('chart' , 'ShopController@chart')->name('chart');
+    Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
+    Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
+    Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
+});
+Route::resource('shop' , ShopController::class);
+
