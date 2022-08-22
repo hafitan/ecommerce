@@ -158,19 +158,21 @@
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Metode pengiriman :</h6>
-                                    <select class="form-select" name="ship" id="">
-                                        <option value="">JNE</option>
-                                        <option value="">JNT</option>
+                                    <select style="width: 295px;" class="form-select" name="ship" id="">
+                                        <option disabled selected value="">-- Pilih --</option>
+                                        <option value="JNT">JNT</option>
+                                        <option value="JNE">JNE</option>
+                                        <option value="Ninja">Ninja</option>
+                                        <option value="COD">COD</option>
                                     </select>
                                 </li>
-                            </ul>
-                            <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Metode pembayaran</h6>
-                                    <select class="form-select" name="pay" id="">
-                                        <option value="">Paypal</option>
-                                        <option value="">Mandiri</option>
-                                        <option value="">Bni</option>
+                                    <select style="width: 295px;" class="form-select" name="pay" id="">
+                                        <option disabled selected value="">-- Pilih --</option>
+                                        <option value="BNI">BNI</option>
+                                        <option value="BCA">BCA</option>
+                                        <option value="MANDIRI">MANDIRI</option>
                                     </select>
                                 </li>
                             </ul>
@@ -179,6 +181,18 @@
                                     <h6>Catatan :</h6>
                                     <textarea class="form-control" placeholder="Leave a Notes here" id="floatingTextarea2" style="height: 100px"></textarea>
                                   </div>
+                            </ul>
+                            <ul class="list-inline">
+                                <div class="form-floating">
+                                    <h6>Alamat :</h6>
+                                    <textarea class="form-control" placeholder="Please fill your address" id="floatingTextarea2" style="height: 100px"></textarea>
+                                  </div>
+                            </ul>
+                            <ul class="list-inline">
+                                <input type="hidden" name="status" value="Sudah Dibayar">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <input type="hidden" name="qty" value="{{ $product->qty }}"
                             </ul>
                             <br>
                             <div class="row pb-3">

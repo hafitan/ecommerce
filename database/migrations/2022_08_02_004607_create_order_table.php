@@ -21,6 +21,8 @@ class CreateOrderTable extends Migration
             $table->date('date');
             $table->integer('price');
             $table->integer('total');
+            $table->string('note')->nullable();
+            $table->string('adress')->nullable();  
             $table->string('shipping')->nullable();
             $table->string('payment')->nullable();
             $table->string('status')->nullable();
