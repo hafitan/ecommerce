@@ -132,7 +132,7 @@
                 <div class="col-lg-5 mt-5">
 {{-- @dd($product); --}}
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="{{asset('public/image/'.$product->image)}}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="#" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                     </div>
@@ -141,6 +141,8 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
+                            <form action="/buy" method="POST">
+                            @csrf
                             <h1 style="text-decoration: bold;" class="h2">Check-Out</h1>
                             <br>
                             <h6 class="h6">Nama product : {{ $product->name }}</h6>
@@ -158,7 +160,7 @@
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Metode pengiriman :</h6>
-                                    <select style="width: 295px;" class="form-select" name="ship" id="">
+                                    <select style="width: 295px;" class="form-select" name="shipping" id="">
                                         <option disabled selected value="">-- Pilih --</option>
                                         <option value="JNT">JNT</option>
                                         <option value="JNE">JNE</option>
@@ -168,7 +170,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <h6>Metode pembayaran</h6>
-                                    <select style="width: 295px;" class="form-select" name="pay" id="">
+                                    <select style="width: 295px;" class="form-select" name="payment" id="">
                                         <option disabled selected value="">-- Pilih --</option>
                                         <option value="BNI">BNI</option>
                                         <option value="BCA">BCA</option>
@@ -179,20 +181,21 @@
                             <ul class="list-inline">
                                 <div class="form-floating">
                                     <h6>Catatan :</h6>
-                                    <textarea class="form-control" placeholder="Leave a Notes here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a Notes here" id="floatingTextarea2" style="height: 100px" name="note"></textarea>
                                   </div>
                             </ul>
                             <ul class="list-inline">
                                 <div class="form-floating">
                                     <h6>Alamat :</h6>
-                                    <textarea class="form-control" placeholder="Please fill your address" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Please fill your address" id="floatingTextarea2" style="height: 100px" name="adress"></textarea>
                                   </div>
                             </ul>
                             <ul class="list-inline">
                                 <input type="hidden" name="status" value="Sudah Dibayar">
                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                 <input type="hidden" name="price" value="{{ $product->price }}">
-                                <input type="hidden" name="qty" value="{{ $product->qty }}"
+                                <input type="hidden" name="qty" value="{{ $product->qty }}">
+                                <input type="hidden" name="category" value="{{ $product->category}}">
                             </ul>
                             <br>
                             <div class="row pb-3">
@@ -200,6 +203,7 @@
                                     <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
 

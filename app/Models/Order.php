@@ -17,5 +17,9 @@ class Order extends Model
         'date',
         'total',
         'status',
+        'shipping',
+        'payment',
+        'adress',
+        'note'
     ];
 }

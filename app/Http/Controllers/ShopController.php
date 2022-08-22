@@ -193,4 +193,23 @@ class ShopController extends Controller
         $product = Chart::find($id);
         return view('admin.shop.checkout' , compact('product'));
     }
+    public function buy(Request $request){
+
+            order::create([
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => $request->price,
+            'category' => $request->category,
+            'total' => $request->qty * $request->price,
+            'date' => Carbon::Today(),
+            'shipping' => $request->shipping,
+            'payment' => $request->payment,
+            'status' => $request->status,
+            'adress' => $request->adress,
+            'note' => $request->note
+            ]);
+
+            return redirect()->route('shop.index')->
+                with('success' , 'Berhasil menyelesaikan order');
+    }
 }

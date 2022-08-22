@@ -57,7 +57,7 @@
             <div class="col-12 col-lg-4">
                 <h2><i>Adera</i> </h2>
                 <p>Aplikasi Platform Jual Beli Produk Di Website Secara Online.</p>
-                <a href="{{route('admin.shop.index')}}">Yuk Mulai</a>
+                <a href="shop">Yuk Mulai</a>
             </div>
             <div class="col-12 col-lg-8">
                 <img src="{{url('landing/assets/images/mainbenner.png')}}" alt="Team process banner">
