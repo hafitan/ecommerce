@@ -32,7 +32,6 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
 Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
-    Route::get('single/{id}' , 'ShopController@single')->name('single');
 
     Route::group(['middleware' => 'auth','1'], function(){
         Route::resource('order', Admin\OrderController::class);
@@ -55,5 +54,7 @@ Route::group(['middleware' => 'auth', 0], function(){
     Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
     Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
 });
+
+Route::get('single/{id}' , 'ShopController@single')->name('single');
 Route::resource('shop' , ShopController::class);
 
