@@ -40,9 +40,15 @@ class CategoryController extends Controller
             'category_product' => 'required',
         ]);
 
-        Category::create($request->all());
+
+        $kuy = Category::where('category_product', $request->category_product)->first();
+        if($kuy == NULL){
+            Category::create($request->all());
         return redirect()->route('admin.category.index')
         ->with('success' , 'Data berhasil ditambah');
+        }else{
+            return redirect()->back()->with('danger', 'nama category telah tersedia');
+        }
     }
 
     /**
