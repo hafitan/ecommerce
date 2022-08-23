@@ -3,10 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
-
-=======
->>>>>>> f0a3a8859d662ca6a7803c9dba0c2c321a1e4c04
 
 
 /*
@@ -60,9 +56,6 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
         Route::post('buy' , 'ShopController@buy')->name('buy');
     });
 
-<<<<<<< HEAD
-
-=======
     Route::get('single/{id}' , 'ShopController@single')->name('single');
     Route::resource('shop' , ShopController::class);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -74,7 +67,7 @@ Route::group(['middleware' => 'auth', 0], function(){
     Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
     Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
 });
->>>>>>> f0a3a8859d662ca6a7803c9dba0c2c321a1e4c04
+
 Route::get('single/{id}' , 'ShopController@single')->name('single');
 
 Route::resource('shop' , ShopController::class);
