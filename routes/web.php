@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-// use App\Http\Controllers\Admin\ProductController;
-// use App\Http\Controllers\Admin\CategoryController;
+
 
 
 /*
@@ -48,23 +47,13 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
 
     Route::group(['middleware' => 'auth', 0], function(){
         Route::post('chart' , 'ShopController@chart')->name('chart');
+        Route::get('cart' , 'ShopController@cart')->name('cart');
         Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
         Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
         Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
         Route::post('buy' , 'ShopController@buy')->name('buy');
     });
 
-    Route::get('single/{id}' , 'ShopController@single')->name('single');
-    Route::resource('shop' , ShopController::class);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    // route admin dashboard
-    Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
-Route::group(['middleware' => 'auth', 0], function(){
-    Route::post('chart' , 'ShopController@chart')->name('chart');
-    Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
-    Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
-    Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
-});
 
 Route::get('single/{id}' , 'ShopController@single')->name('single');
 Route::resource('shop' , ShopController::class);

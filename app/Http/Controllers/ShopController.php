@@ -212,4 +212,7 @@ class ShopController extends Controller
             return redirect()->route('shop.index')->
                 with('success' , 'Berhasil menyelesaikan order');
     }
+    public function cart(){
+        return view('admin.shop.cart');
+    }
 }
