@@ -11,7 +11,7 @@
 
     <!-- Custom CSS -->
      <link rel="stylesheet" href="{{url('landing/css/style.css')}}">
-    <!-- title --!>
+    <!-- title -->
     <title>E-Commerce</title>
 </head>
 
