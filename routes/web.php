@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f0a3a8859d662ca6a7803c9dba0c2c321a1e4c04
 
 
 /*
@@ -31,15 +34,18 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
 Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
-    
+
     Route::group(['middleware' => 'auth','1'], function(){
         Route::resource('order', Admin\OrderController::class);
+        Route::resource('listOrder', Admin\ListOrderController::class);
         Route::resource('product', Admin\ProductController::class);
         Route::resource('category', Admin\CategoryController::class);
         Route::resource('user', Admin\UserController::class);
         Route::resource('charts' , ChartsController::class);
         Route::post('restock' , 'Admin\ProductController@restock')->name('restock');
     });
+
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // route admin dashboard
     Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
@@ -54,6 +60,21 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
         Route::post('buy' , 'ShopController@buy')->name('buy');
     });
 
+<<<<<<< HEAD
 
+=======
+    Route::get('single/{id}' , 'ShopController@single')->name('single');
+    Route::resource('shop' , ShopController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // route admin dashboard
+    Route::get('adminHome', [HomeController::class, 'adminHome'])->name('adminHome')->middleware('is_admin');
+Route::group(['middleware' => 'auth', 0], function(){
+    Route::post('chart' , 'ShopController@chart')->name('chart');
+    Route::post('keranjang' , 'ShopController@keranjang')->name('keranjang');
+    Route::post('checkout' , 'ShopController@bcheckout')->name('bcheckout');
+    Route::get('checkout/{id}' , 'ShopController@checkout')->name('checkout');
+});
+>>>>>>> f0a3a8859d662ca6a7803c9dba0c2c321a1e4c04
 Route::get('single/{id}' , 'ShopController@single')->name('single');
+
 Route::resource('shop' , ShopController::class);

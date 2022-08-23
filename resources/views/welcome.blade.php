@@ -11,7 +11,7 @@
 
     <!-- Custom CSS -->
      <link rel="stylesheet" href="{{url('landing/css/style.css')}}">
-
+    <!-- title -->
     <title>E-Commerce</title>
 </head>
 
@@ -57,7 +57,11 @@
             <div class="col-12 col-lg-4">
                 <h2><i>Adera</i> </h2>
                 <p>Aplikasi Platform Jual Beli Produk Di Website Secara Online.</p>
+<<<<<<< HEAD
                 <a href="{{route('shop.index')}}">Yuk Mulai</a>
+=======
+                <a href="shop">Yuk Mulai</a>
+>>>>>>> f0a3a8859d662ca6a7803c9dba0c2c321a1e4c04
             </div>
             <div class="col-12 col-lg-8">
                 <img src="{{url('landing/assets/images/mainbenner.png')}}" alt="Team process banner">
