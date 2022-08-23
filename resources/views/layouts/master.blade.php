@@ -71,6 +71,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('admin.order.index') }}">
           <i class="bi bi-bag-check"></i>
+          <span>Order</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.listOrder.index') }}">
+          <i class="bi bi-bag-check"></i>
           <span>List Order</span></a>
       </li>
       <li class="nav-item active">
