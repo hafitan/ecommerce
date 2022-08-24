@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\controller;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Darryldecode\Cart\CartCondition;
 
 class OrderController extends Controller
 {
@@ -15,11 +17,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $order = Order::all();
         $category = Category::all();
         $product = Product::all();
+
         return view('admin.order.index', compact('order', 'category', 'product'));
     }
 
