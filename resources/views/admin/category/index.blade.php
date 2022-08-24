@@ -105,6 +105,9 @@
                 </tr>
                          @endforeach
             </table>
+            <div>
+            {{ $category->links() }}
+            </div>
         </div>
 
     </main>
