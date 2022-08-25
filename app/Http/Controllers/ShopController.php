@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Chart;
 use App\Models\Shipping;
 use App\Models\Payment;
+use App\Models\Cart;
 use Carbon\Carbon;
 class ShopController extends Controller
 {
@@ -213,8 +214,9 @@ class ShopController extends Controller
                 with('success' , 'Berhasil menyelesaikan order');
     }
     public function cart(){
-        $cartItems = \Cart::getContent();
-        return view('admin.shop.cart');
+        // $cartItems = \Cart::getContent();
+        $cart = Chart::all();
+        return view('admin.shop.cart', compact('cart'));
     }
     public function addToCart(Request $request)
     {

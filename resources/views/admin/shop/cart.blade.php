@@ -182,7 +182,7 @@ https://templatemo.com/tm-559-zay-shop
     </div>
     </td>
     <td width="100px"><img height="100" width="100" src="{{url('public/image/baju.png')}}"class="img-fluid" alt="Phone image" style="padding:10px"></td>
-    <td  width="900px">kaus hitam keren parah<br>RP.105.000</td>
+    <td  width="900px">{{ $cart->name }}<br>RP.105.000</td>
     <td>
         <div class="quantity buttons_added"style="padding-top:15px;">
         <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
@@ -194,10 +194,10 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </td>
 </tr>
- 
+
 </table>
 
-                        </div>                            
+                        </div>
                     </div>
                 </div>
                     </div>
