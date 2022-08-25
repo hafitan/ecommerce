@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::first()->paginate(5);
+        $category = Category::paginate(5);
         return view('admin.category.index' , compact('category'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

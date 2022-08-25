@@ -56,17 +56,17 @@
                         <div class="container text-center">
                             <div class="row">
                                 @foreach ($product as $pro)
-                                    <div class="col-4 mb-3">
+                                    <div class="col-7 mb-4">
                                         <div class="card">
                                             <img class="card-img img-fluid" style="height: 200px ; width: 290px;"
                                             src="{{ asset('public/image/' . $pro->image) }}" alt="Card image cap"
                                             id="product-detail">
-                                            <div class="card-body">
+                                            <div class="card-body"style="padding:10px">
                                                 <input type="text" id="id" data-id="{{ $pro->id }}" hidden>
                                                 <input type="text" class="card-title" name="name" disabled id="name" data-name="{{ $pro->name }}" value="{{ $pro->name }}">
                                                 <input type="text" class="card-text" name="qty" id="qty" data-qty="{{ $pro->stock }}" value="{{ $pro->stock }}" disabled>
                                                 <input type="text" class="card-text" name="price" id="price" data-price="{{ $pro->price }}" value="{{ $pro->price }}" disabled>
-                                                <button type="submit" class="btn btn-primary">beli</button>
+                                                <div class="card-body"><button type="submit" class="btn btn-primary ">beli</button></div>
                                             </div>
                                         </div>
                                     </div>
