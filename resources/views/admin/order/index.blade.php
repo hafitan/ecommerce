@@ -27,7 +27,7 @@
                     <div class="container text-center">
                         <div class="row">
                         @foreach ($product as $p)
-                                <div class="col-4 mb-3">c
+                                <div class="col-4 mb-3">
                                     <div class="card" style="width:200px; height : 350px;">
                                         <img class="card-img img-fluid" style="height: 200px ; width: 290px;"
                                             src="{{ asset('public/image/' . $p->image) }}" alt="Card image cap"
@@ -56,24 +56,31 @@
                         <div class="container text-center">
                             <div class="row">
                                 @foreach ($product as $key => $pro)
-                                    <div class="col-5 mb-5">
+                                    <div class="col-4 mb-4">
                                         <div class="card" style="padding:11px;">
                                             <img class="card-img img-fluid" style="height: 200px ; width: 290px;"
                                             src="{{ asset('public/image/' . $pro->image) }}" alt="Card image cap"
                                             id="product-detail">
                                             <div class="card-body"style="">
-                                                <input type="text" name="id" id="id{{ $key+1 }}" data-id="{{ $key+1 }}" hidden>
-                                                <input type="text" class="card-title bg-light card" name="name" disabled id="name{{ $key+1 }}" data-name="{{ $pro->name }}" value="{{ $pro->name }}">
-                                                <input type="text" class="card-text bg-light card" name="qty" id="qty{{ $key+1 }}" data-qty="{{ $pro->stock }}" value="{{ $pro->stock }}" disabled>
-                                                <input type="text" class="card-text bg-light card" name="price" id="price{{ $key+1 }}" data-price="{{ $pro->price }}" value="{{ $pro->price }}" disabled>
+                                                <input type="text"  name="id" id="id{{ $key+1 }}" data-id="{{ $key+1 }}" hidden>
+                                                <input type="text" style=" width: 140px;" class="card-title bg-light card " name="name" disabled id="name{{ $key+1 }}" data-name="{{ $pro->name }}" value="{{ $pro->name }}">
+                                                <input type="text" style=" width: 140px;" class="card-text bg-light card" name="qty" id="qty{{ $key+1 }}" data-qty="{{ $pro->stock }}" value="{{ $pro->stock }}" disabled>
+                                                <input type="text" style=" width: 140px;" class="card-text bg-light card" name="price" id="price{{ $key+1 }}" data-price="{{ $pro->price }}" value="{{ $pro->price }}" disabled>
                                                 <div class="card-body"style=""><button type="submit" class="btn btn-primary submit" data-id="{{ $key+1 }}">beli</button></div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
-                                <div class="col-2 md-4 border border-dark" style="background-color: white; border-radius : 5%;" border-color:black;>
+                                <div style="
+                                    left: 1050px;
+                                    top: 180px;
+                                    width: 400px;
+                                    position: fixed;
+                                ">
+                                    <div class="col-10 border border-dark position-relative" style="background-color: white; border-radius :5%; padding-bottom:470px;" border-color:black;>
                                     <br>
-                                    <h6 class="text-center">halaman daftar beli</h6>
+                                    <h6 class="text-center " style="">halaman daftar beli</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
