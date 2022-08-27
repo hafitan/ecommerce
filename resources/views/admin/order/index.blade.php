@@ -53,32 +53,32 @@
                 <form action="{{ route('admin.order.store') }}" method="post">
                     @csrf
                     <div class="col-md-8">
-                        <div class="text-center">
-                            <div style="display: flex;margin-right: -2.75cm;">
-                                @foreach ($product as $pro)
+                        <div class="container text-center">
+                            <div class="row">
+                                @foreach ($product as $key => $pro)
                                     <div class="col-5 mb-5">
                                         <div class="card" style="padding:11px;">
                                             <img class="card-img img-fluid" style="height: 200px ; width: 290px;"
                                             src="{{ asset('public/image/' . $pro->image) }}" alt="Card image cap"
                                             id="product-detail">
                                             <div class="card-body"style="">
-                                                <input  type="text" id="id" data-id="{{ $pro->id }}" hidden>
-                                                <input type="text" class="card-title bg-light card" name="name" disabled id="name" data-name="{{ $pro->name }}" value="{{ $pro->name }}">
-                                                <input type="text" class="card-text bg-light card" name="qty" id="qty" data-qty="{{ $pro->stock }}" value="{{ $pro->stock }}" disabled>
-                                                <input type="text" class="card-text bg-light card" name="price" id="price" data-price="{{ $pro->price }}" value="{{ $pro->price }}" disabled>
-                                                <div class="card-body"style=""><button type="submit" class="btn btn-primary ">beli</button></div>
+                                                <input type="text" name="id" id="id{{ $key+1 }}" data-id="{{ $key+1 }}" hidden>
+                                                <input type="text" class="card-title bg-light card" name="name" disabled id="name{{ $key+1 }}" data-name="{{ $pro->name }}" value="{{ $pro->name }}">
+                                                <input type="text" class="card-text bg-light card" name="qty" id="qty{{ $key+1 }}" data-qty="{{ $pro->stock }}" value="{{ $pro->stock }}" disabled>
+                                                <input type="text" class="card-text bg-light card" name="price" id="price{{ $key+1 }}" data-price="{{ $pro->price }}" value="{{ $pro->price }}" disabled>
+                                                <div class="card-body"style=""><button type="submit" class="btn btn-primary submit" data-id="{{ $key+1 }}">beli</button></div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
+                                <div class="col-2 md-4 border border-dark" style="background-color: white; border-radius : 5%;" border-color:black;>
+                                    <br>
+                                    <h6 class="text-center">halaman daftar beli</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
-                <div class="col-md-4 border border-dark" style="background-color: white; border-radius : 5%;" border-color:black;>
-                    <br>
-                    <h6 class="text-center">halaman daftar beli</h6>
-                </div>
             </div>
         </main>
     </div>
@@ -92,14 +92,23 @@ $.ajaxSetup({
     }
 });
 $(document).ready(function () {
+
     $("form").submit(function (event) {
         var index = $(".submit").index(this)
-        var formData = {
-            id: $("#id").eq(index).data("id"),
-            name: $("#name").eq(index).data("name"),
-            qty: $("#qty").eq(index).data("qty"),
-            price: $("#price").eq(index).data("price"),
+
+        let id = $('input[name="id"]').attr('id')
+        let id_name = $('input[name="name"]').attr('name')
+        let id_qty = $('input[name="qty"]').attr('qty')
+        let id_price = $('input[name="price"]').attr('price')
+
+        let formData = {
+            id: id,
+            name: id_name,
+            qty: id_qty,
+            price: id_price,
         };
+
+        console.log(formData);
 
         $.ajax({
             type: "POST",
