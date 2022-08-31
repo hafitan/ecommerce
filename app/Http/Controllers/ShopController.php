@@ -9,6 +9,8 @@ use App\Models\Chart;
 use App\Models\Shipping;
 use App\Models\Payment;
 use Carbon\Carbon;
+use App\models\User;
+use App\Models\Idacoount;
 class ShopController extends Controller
 {
     /**
@@ -158,6 +160,7 @@ class ShopController extends Controller
 
         Chart::create([
             'name' => $request->name,
+            'user_id' => $request->user_id,
             'qty' => $request->qty,
             'price' => $request->price,
             'image' => $request->image,
@@ -185,8 +188,10 @@ class ShopController extends Controller
             'status' => $request->status
        ]);
 
+
        return redirect()->route('checkout', $result->id);
         // return view('admin.shop.checkout' , compact('product'));
+
     }
 
     public function checkout($id){
@@ -212,7 +217,13 @@ class ShopController extends Controller
             return redirect()->route('shop.index')->
                 with('success' , 'Berhasil menyelesaikan order');
     }
-    public function cart(){
-        return view('admin.shop.cart');
+    public function cart(Request $request){
+
+        $itemuser = $request->user();//ambil data user
+        //dd($itemuser);
+        $itemcart = Chart::where('user_id' , $itemuser->id)->get();
+        $data = array('title' => 'Shopping Cart',
+                 'itemcart' => $itemcart);
+        return view('admin.shop.cart', $data)->with('no', 1);
     }
 }
