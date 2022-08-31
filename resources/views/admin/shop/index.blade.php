@@ -183,7 +183,7 @@ https://templatemo.com/tm-559-zay-shop
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="{{ url('single', $p->id) }}"" class="h3 text-decoration-none">{{ $p->name }}</a>
+                                <a href="{{ url('single', $p->id) }}" class="h3 text-decoration-none">{{ $p->name }}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li class="pt-2">
                                         <span class="test-color-dot color-dot-red float-left rounded-circle ml-1"></span>

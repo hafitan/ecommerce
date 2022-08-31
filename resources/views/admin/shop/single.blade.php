@@ -128,41 +128,32 @@
         @endif
         <div class="container pb-5">
             <div class="row">
-
                 <div class="col-lg-5 mt-5">
-
                     <div class="card mb-3">
-
                         <img class="card-img img-fluid" src="{{asset('public/image/'.$product->image)}}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
-
                     </div>
                 </div>
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">{{ $product->name}}</h1>
-                            <p class="h3 py-2">Rp.{{ $product->price }}</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h6>Stock :   {{ $product->stock }}</h6>
-                                </li>
-                                <li class="list-inline-item">
-                                    <p class="text-muted"><strong>{{ $product->brand }}</strong></p>
-                                </li>
+                        <h1 class="h2">{{ $product->name}}</h1>
+                        <p class="h3 py-2">Rp.{{ $product->price }}</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                            <h6>Stock :   {{ $product->stock }}</h6>
+                            </li>
+                            <li class="list-inline-item">
+                            <p class="text-muted"><strong>{{ $product->brand }}</strong></p>
+                            </li>
                             </ul>
-
                             <h6>Description:</h6>
                             <p>{!! $product->desc !!} </p>
-
-
-
                             <form action="{{ route('bcheckout') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
@@ -174,7 +165,7 @@
                                                     <input type="hidden" name="name" value="{{ $product->name }}">
                                                     <input type="hidden" name="price" value="{{ $product->price }}" id="">
                                                     <input type="hidden" name="status" value="Belum dibayar">
-                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" max="{{ $product->stock }}" s id="first" required>
+                                                    <input type="number" style="width: 100px;" class="form-control" name="qty" min="1" max="{{ $product->stock }}" id="first" required>
                                                     @error('qty')
                                                         <span class="text-danger">Field ini tidak boleh kosong</span>
                                                     @enderror
@@ -183,8 +174,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                                {{-- @if (Route::has('login'))
-                                    @auth --}}
                                 <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
@@ -199,22 +188,10 @@
                                 <input type="hidden" name="price" value="{{ $product->price }}" id="">
                                 <input type="hidden" name="status" value="Belum dibayar">
                                 <input type="hidden" name="qty" id="result" required>
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                 <div class="col d-grid">
                                     <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
                                 </div>
-                                {{-- @else --}}
-                                {{-- <div class="row pb-3">
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Login</button>
-                                    </div>
-                                </div>
-                                @if (Route::has('register'))
-                                <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Register</button>
-                                </div>
-                                @endif --}}
-                                    {{-- @endauth
-                                @endif --}}
                             </form>
                         </div>
                     </div>
@@ -223,14 +200,10 @@
         </div>
     </section>
     <!-- Close Content -->
-
-
-
-  <!-- Start Footer -->
+    <!-- Start Footer -->
   <footer class="bg-dark" id="tempaltemo_footer">
     <div class="container">
         <div class="row">
-
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-success border-bottom pb-3 border-light logo">Adera Clothes</h2>
                 <ul class="list-unstyled text-light footer-link-list">
@@ -248,8 +221,7 @@
                     </li>
                 </ul>
             </div>
-
-
+        </div>
         <div class="row text-light mb-4">
             <div class="col-12 mb-3">
                 <div class="w-100 my-3 border-top border-light"></div>
@@ -321,7 +293,5 @@
         });
     </script>
     <!-- End Slider Script -->
-
 </body>
-
 </html>

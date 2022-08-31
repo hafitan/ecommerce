@@ -13,7 +13,7 @@ class ChartsController extends Controller
      */
     public function index()
     {
-        $chart = Chart::all();
+        $chart = Chart::paginate(5);
         return view('admin.charts.index' , compact('chart'));
     }
 

@@ -10,6 +10,8 @@ use App\Models\Shipping;
 use App\Models\Payment;
 use App\Models\Cart;
 use Carbon\Carbon;
+use App\models\User;
+use App\Models\Idacoount;
 class ShopController extends Controller
 {
     /**
@@ -159,6 +161,7 @@ class ShopController extends Controller
 
         Chart::create([
             'name' => $request->name,
+            'user_id' => $request->user_id,
             'qty' => $request->qty,
             'price' => $request->price,
             'image' => $request->image,
@@ -186,8 +189,10 @@ class ShopController extends Controller
             'status' => $request->status
        ]);
 
+
        return redirect()->route('checkout', $result->id);
         // return view('admin.shop.checkout' , compact('product'));
+
     }
 
     public function checkout($id){
@@ -213,55 +218,13 @@ class ShopController extends Controller
             return redirect()->route('shop.index')->
                 with('success' , 'Berhasil menyelesaikan order');
     }
-    public function cart(){
-        // $cartItems = \Cart::getContent();
-        $cart = Chart::all();
-        return view('admin.shop.cart', compact('cart'));
-    }
-    public function addToCart(Request $request)
-    {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'category' => $request->category,
-            'qty' => $request->qty,
-            'date' => $request->date,
-            'price' => $request->price,
-            'total' => $request->total,
-            'status' => $request->status,
-            'image' => $request->image,
-        ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
-        return redirect()->route('cart');
-    }
-    public function updateCart(Request $request)
-    {
-        \Cart::update(
-            $request->id,
-            [
-                'qty' => [
-                    'relative' => false,
-                    'value' => $request->qty
-                ],
-            ]
-        );
-        session()->flash('success', 'Item Cart is Updated Successfully !');
+    public function cart(Request $request){
 
-        return redirect()->route('cart.list');
-    }
-    public function removeCart(Request $request)
-    {
-        \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
-        return redirect()->route('cart');
-    }
-    public function clearAllCart()
-    {
-        \Cart::clear();
-
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-
-        return redirect()->route('cart');
-    }
+        $itemuser = $request->user();//ambil data user
+        //dd($itemuser);
+        $itemcart = Chart::where('user_id' , $itemuser->id)->get();
+        $data = array('title' => 'Shopping Cart',
+                 'itemcart' => $itemcart);
+        return view('admin.shop.cart', $data)->with('no', 1);
+  }
 }

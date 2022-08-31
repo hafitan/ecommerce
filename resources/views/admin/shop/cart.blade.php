@@ -32,6 +32,20 @@ https://templatemo.com/tm-559-zay-shop
 
 -->
 </head>
+<script>
+    function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
+function openSubmit(){  // This function is called by the checkbox click
+  if(document.getElementById('chk').checked == true){ // If it is checked
+    document.getElementById('submit').disabled = false; // Then we remove the disable attribute
+    }
+}
+</script>
 <body>
     <!-- Start Top Nav -->
     <!-- Close Top Nav -->
@@ -174,6 +188,44 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row">
                     <div class="">
                         <div class=”Cart-Container”>
+<<<<<<< HEAD
+                            <form action="{{ route('bcheckout') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input class="form-check-input" type="checkbox" value="" onchange="openSubmit()"  id="chk" onclick="toggle(this);" style="position: absolute; right:830px">
+                                <p style="position: absolute; right:730px">Pilih Semua</p>
+                                <br><br>
+                                @foreach($itemcart as $key => $c)
+                                <table class="table table-bordered">
+                                <tr>
+                                    <td width="10px">
+                                    <div class="form-check"style="padding-top:15px;padding-left:38px;">
+                                        <input class="form-check-input" id="chk" onchange="openSubmit()" type="checkbox" value="">
+                                    </div>
+                                    </td>
+                                    <td width="100px"><img height="100" width="100" src="{{url('public/image/baju.png')}}"class="img-fluid" alt="Phone image" style="padding:10px"></td>
+                                    <td  width="900px">{{ $c->name }}<br>Total harga :{{ $c->total }}</td>
+                                    <td>
+                                    <div class="quantity buttons_added"style="padding-top:8px;">
+                                        <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="qty" value="1" title="Qty" class="input-text qty text" size="4" style="height: 41px" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                                    </div>
+                                    </td>
+                                    <td>
+                                    <div class="quantity buttons_added"style="padding-top:8px;">
+                                        <input type="hidden" name="name" value="{{ $c->name}}">
+                                        <input type="hidden" name="price" value="{{ $c->price}}">
+                                        <input type="hidden" name="category" value="{{ $c->category }}">
+                                        <input type="hidden" name="status" value="Belum dibayar"> 
+                                        <button class="btn btn-danger" onclick="return confirm('Yakin Hapus data ini??')"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>      
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    @endforeach
+                                    <button type="submit" id="submit" class="btn btn-primary">Purchase</button>
+                                </form>
+                            </div>                            
+                        </div>
+=======
 <table class="table table-bordered">
 <tr>
     <td width="10px">
@@ -200,11 +252,13 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                     </div>
                 </div>
+>>>>>>> 6f3cc5ab9ed3b73c218f70d61659eaa17f7ff022
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- End Content -->
 

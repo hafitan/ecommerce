@@ -117,7 +117,9 @@
                 </tr>
                          @endforeach
             </table>
-            </table>
+            <div>
+                {{ $chart->links() }}
+            </div>
         </div>
 
     </main>
