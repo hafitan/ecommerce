@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -40,6 +41,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
         Route::resource('user', Admin\UserController::class);
         Route::resource('charts' , ChartsController::class);
         Route::post('restock' , 'Admin\ProductController@restock')->name('restock');
+        Route::post('reorder', 'Admin\OrderController@reorder')->name('reorder');
     });
 
 

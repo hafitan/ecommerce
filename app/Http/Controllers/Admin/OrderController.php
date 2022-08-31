@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Darryldecode\Cart\CartCondition;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -18,13 +19,22 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
+        $carts = [];
+        $cart = [];
         $order = Order::all();
         $category = Category::all();
         $product = Product::all();
+        // $request->session()->forget('cart');
 
-        return view('admin.order.index', compact('order', 'category', 'product'));
+        if($request->session()->has('cart')){
+			$cart = $request->session()->get('cart');
+            // $total = Product::where('price'  * $request->qty);
+		}
+        $carts = Product::whereIn('id', $cart)->get();
+        // dd($carts);
+        return view('admin.order.index', compact('order', 'category', 'product', 'carts'));
     }
 
     /**
@@ -142,4 +152,21 @@ class OrderController extends Controller
         return redirect()->route('order.index')->with('success', 'berhasil hapus');
     }
 
+    public function reorder(Request $request) {
+        $input = $request->all();
+        // dd($input['id']);
+        $cart = [];
+        if($request->session()->has('cart')){
+			$cart = $request->session()->get('cart');
+		}
+        // dd($cart);
+        $cart[] = $input['id'];
+        $request->session()->put('cart', $cart);
+
+
+        Log::info($input);
+        return response()->json(['success'=>'Got Simple Ajax Request.']);
 }
+
+}
+
