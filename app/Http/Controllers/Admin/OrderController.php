@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\controller;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Darryldecode\Cart\CartCondition;
 
 class OrderController extends Controller
 {
@@ -15,11 +17,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $order = Order::all();
         $category = Category::all();
         $product = Product::all();
+
         return view('admin.order.index', compact('order', 'category', 'product'));
     }
 
@@ -50,25 +54,46 @@ class OrderController extends Controller
         //     'date' => 'required',
         //     'status' => 'required',
         // ]);
-        $barang = Product::find($request->product_id);
+        // $barang = Product::find($request->product_id);
         // dd($barang);
-        if($request->qty > $barang->stock){
-            return redirect()->back()->with('danger', 'stock tidak cukup');
-        }
+        // if($request->qty > $barang->stock){
+        //     return redirect()->back()->with('danger', 'stock tidak cukup');
+        // }
 
-            Order::create([
-                'name'     => $barang->name,
-                'qty'   => $request->qty,
-                'price' => $barang->price,
-                'total' => $request->qty * $barang->price,
-                'category'   => $request->category,
-                'date' => Carbon::now(),
-                'status' => $request->status,
-            ]);
-            $barang->stock -= $request->qty;
-            $barang->save();
+        //     Order::create([
+        //         'name'     => $barang->name,
+        //         'qty'   => $request->qty,
+        //         'price' => $barang->price,
+        //         'total' => $request->qty * $barang->price,
+        //         'category'   => $request->category,
+        //         'date' => Carbon::now(),
+        //         'status' => $request->status,
+        //     ]);
+        //     $barang->stock -= $request->qty;
+        //     $barang->save();
 
-            return redirect()->route('admin.order.index')->with('success', 'pembelian berhasil');
+        //     return redirect()->route('admin.order.index')->with('success', 'pembelian berhasil');
+
+        // if (empty($_POST['name'])) {
+        //     $errors['name'] = 'Name is required.';
+        // }
+
+        // if (empty($_POST['email'])) {
+        //     $errors['email'] = 'Email is required.';
+        // }
+
+        // if (empty($_POST['superheroAlias'])) {
+        //     $errors['superheroAlias'] = 'Superhero alias is required.';
+        // }
+
+        // if (!empty($errors)) {
+        //     $data['success'] = false;
+        //     $data['errors'] = $errors;
+        // } else {
+        //     $data['success'] = true;
+        //     $data['message'] = 'Success!';
+        // }
+
     }
 
     /**
@@ -116,4 +141,5 @@ class OrderController extends Controller
         $order->delete();
         return redirect()->route('order.index')->with('success', 'berhasil hapus');
     }
+
 }

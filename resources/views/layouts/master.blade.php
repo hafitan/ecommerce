@@ -21,6 +21,10 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('../../assets/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+  {{-- jQuery ajax --}}
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
 </head>
 
@@ -189,7 +193,7 @@
       </div>
     </div>
   </div>
-  @stack('scripts')
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
@@ -207,7 +211,8 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('assets/admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('assets/admin/js/demo/chart-pie-demo.js') }}"></script>
-
+  @stack('skrip')
+  @stack('scripts')
 </body>
 
 </html>

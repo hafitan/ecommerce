@@ -188,6 +188,7 @@ function openSubmit(){  // This function is called by the checkbox click
                 <div class="row">
                     <div class="">
                         <div class=”Cart-Container”>
+<<<<<<< HEAD
                             <form action="{{ route('bcheckout') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input class="form-check-input" type="checkbox" value="" onchange="openSubmit()"  id="chk" onclick="toggle(this);" style="position: absolute; right:830px">
@@ -224,6 +225,34 @@ function openSubmit(){  // This function is called by the checkbox click
                                 </form>
                             </div>                            
                         </div>
+=======
+<table class="table table-bordered">
+<tr>
+    <td width="10px">
+    <div class="form-check"style="padding-top:20px;padding-left:35px;">
+        <input class="form-check-input" type="checkbox" value="">
+    </div>
+    </td>
+    <td width="100px"><img height="100" width="100" src="{{url('public/image/baju.png')}}"class="img-fluid" alt="Phone image" style="padding:10px"></td>
+    <td  width="900px">{{ $cart->name }}<br>RP.105.000</td>
+    <td>
+        <div class="quantity buttons_added"style="padding-top:15px;">
+        <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+        </div>
+    </td>
+    <td>
+        <div class="quantity buttons_added"style="padding-top:15px;">
+        <button class="btn btn-danger" onclick="return confirm('Yakin Hapus data ini??')"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+    </td>
+</tr>
+
+</table>
+
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 6f3cc5ab9ed3b73c218f70d61659eaa17f7ff022
                     </div>
                 </div>
             </div>
