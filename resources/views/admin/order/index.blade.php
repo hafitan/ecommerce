@@ -63,7 +63,8 @@
                                             @foreach ($carts as $item)
                                                 <tr>
                                                     <td>{{ $item->name }}</td>
-                                                    <td><input type="number" name="qty" min="1" class="form-control" value="1"></td>
+                                                    {{-- <td><input type="number" name="qty" min="1" class="form-control" value="1"></td> --}}
+                                                    <td><input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="qty" value="1" title="Qty" class="input-text qty text" size="4" style="height: 41px" pattern="" inputmode=""><input type="button" value="+" class="plus"></td>
                                                     <td><input type="number" class="form-control" value="{{ $item->price }}" disabled></td>
                                                 </tr>
                                             @endforeach
@@ -93,14 +94,14 @@
         let product_id = $(this).data('product-id');
         console.log(product_id);
         // let name = $("input[name=name]").val();
-        let price = $("input[name=price]").val();
-        let qty = $("input[name=qty]").val();
+        // let price = $("input[name=price]").val();
+        // let qty = $("input[name=qty]").val();
         // let stock = $("input[name=stock]").val();
         let url = "{{ route('admin.reorder') }}";
         $.ajax({
             type: 'POST',
             url:url,
-            data:{id:product_id, price:price * qty},
+            data:{id:product_id},
             success:function(data){
                 // alert(data.success);
                 location.reload();
