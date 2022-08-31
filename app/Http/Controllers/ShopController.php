@@ -218,7 +218,6 @@ class ShopController extends Controller
             return redirect()->route('shop.index')->
                 with('success' , 'Berhasil menyelesaikan order');
     }
-<<<<<<< HEAD
     public function cart(Request $request){
 
         $itemuser = $request->user();//ambil data user
@@ -227,57 +226,5 @@ class ShopController extends Controller
         $data = array('title' => 'Shopping Cart',
                  'itemcart' => $itemcart);
         return view('admin.shop.cart', $data)->with('no', 1);
-=======
-    public function cart(){
-        // $cartItems = \Cart::getContent();
-        $cart = Chart::all();
-        return view('admin.shop.cart', compact('cart'));
-    }
-    public function addToCart(Request $request)
-    {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'category' => $request->category,
-            'qty' => $request->qty,
-            'date' => $request->date,
-            'price' => $request->price,
-            'total' => $request->total,
-            'status' => $request->status,
-            'image' => $request->image,
-        ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
-        return redirect()->route('cart');
-    }
-    public function updateCart(Request $request)
-    {
-        \Cart::update(
-            $request->id,
-            [
-                'qty' => [
-                    'relative' => false,
-                    'value' => $request->qty
-                ],
-            ]
-        );
-        session()->flash('success', 'Item Cart is Updated Successfully !');
-
-        return redirect()->route('cart.list');
-    }
-    public function removeCart(Request $request)
-    {
-        \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
-        return redirect()->route('cart');
-    }
-    public function clearAllCart()
-    {
-        \Cart::clear();
-
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-
-        return redirect()->route('cart');
->>>>>>> 6f3cc5ab9ed3b73c218f70d61659eaa17f7ff022
-    }
+  }
 }
